@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Cenowy v2 — KWhotel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #4a2e1a;
+  --navy-mid:   #6b4226;
+  --gold:       #b8943f;
+  --gold-light: #f5edda;
+  --green:      #2d6e3e;
+  --green-bg:   rgba(45,110,62,.09);
+  --red:        #9b2929;
+  --red-bg:     rgba(155,41,41,.07);
+  --text:       #1c1c1c;
+  --soft:       #5a5a5a;
+  --muted:      #9a9a9a;
+  --border:     #e2ddd6;
+  --bg:         #f8f6f2;
+  --white:      #ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+
+/* ── HEADER ── */
+header{background:var(--navy);padding:3rem 2rem 2.5rem;text-align:center}
+header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3rem);color:#fff;letter-spacing:.04em}
+header h1 span{color:var(--gold);font-style:italic}
+header p{color:rgba(255,255,255,.55);font-size:.85rem;margin-top:.5rem;font-weight:300;letter-spacing:.06em;text-transform:uppercase}
+.gold-line{width:40px;height:2px;background:var(--gold);margin:1.2rem auto .8rem}
+
+/* ── LAYOUT ── */
+main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+section{margin-bottom:3.5rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--navy);border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:1.4rem;letter-spacing:.02em}
+
+/* ── RULES ── */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.rule-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.3rem;display:flex;gap:1rem;align-items:flex-start}
+.rule-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+.rule-card.wknd .rule-icon{background:rgba(184,148,63,.15);color:var(--gold)}
+.rule-card.los3 .rule-icon{background:var(--green-bg);color:var(--green)}
+.rule-card.los6 .rule-icon{background:rgba(107,66,38,.1);color:var(--navy-mid)}
+.rule-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.25rem}
+.rule-val{font-size:.95rem;font-weight:500;color:var(--text);line-height:1.4}
+
+/* ── PRICE TABLE ── */
+.tbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;background:var(--white)}
+thead tr{background:var(--navy)}
+thead th{color:rgba(255,255,255,.75);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:.75rem 1rem;text-align:center}
+thead th:first-child{text-align:left;color:#fff;letter-spacing:.04em}
+tbody tr:nth-child(even){background:#faf9f7}
+tbody tr:hover{background:var(--gold-light);transition:background .15s}
+tbody td{padding:.75rem 1rem;font-size:.9rem;text-align:center;border-bottom:1px solid var(--border);color:var(--text)}
+tbody td:first-child{text-align:left;font-weight:500;font-size:.85rem}
+tbody tr:last-child td{border-bottom:none}
+.na{color:var(--muted);font-size:.8rem}
+.price-cell{font-variant-numeric:tabular-nums}
+
+/* ── SELECTORS ── */
+.sel-row{display:flex;gap:1rem;margin-bottom:1.4rem;flex-wrap:wrap}
+.sel-group{display:flex;flex-direction:column;gap:.35rem;flex:1;min-width:200px}
+.sel-group label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:500}
+select{padding:.55rem .9rem;border:1px solid var(--border);border-radius:6px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text);background:var(--white);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a5a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2.2rem}
+select:focus{outline:none;border-color:var(--navy)}
+
+/* ── MATRIX TABLE ── */
+.mat-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+#mtbl thead tr{background:var(--navy)}
+#mtbl thead th{color:rgba(255,255,255,.75);font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;padding:.7rem .8rem;text-align:center}
+#mtbl thead th:first-child{text-align:left}
+#mtbl tbody td{padding:.7rem .8rem;text-align:center;border-bottom:1px solid var(--border);border-left:1px solid var(--border)}
+#mtbl tbody td:first-child{border-left:none;text-align:left;font-size:.85rem;font-weight:500;color:var(--text)}
+#mtbl tbody tr:last-child td{border-bottom:none}
+.tier-row td{background:#f0eee9 !important;font-size:.72rem;color:var(--soft);padding:.4rem .8rem !important;border-left:none !important;text-align:left !important;letter-spacing:.01em}
+.cell-pct{font-size:.95rem;font-weight:600;font-variant-numeric:tabular-nums}
+.cell-sub{font-size:.75rem;color:var(--soft);margin-top:2px;font-variant-numeric:tabular-nums}
+.na-cell{color:var(--muted);font-size:.8rem}
+
+/* ── SUMMARY CARDS ── */
+.smry{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:1.4rem}
+@media(max-width:640px){.smry{grid-template-columns:repeat(2,1fr)}}
+.sc{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem}
+.sc .l{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.3rem}
+.sc .v{font-size:1.1rem;font-weight:600;color:var(--text)}
+.sc .v.good{color:var(--green)}
+.sc .v.base{color:var(--navy)}
+
+/* ── NOTE ── */
+.note{font-size:.78rem;color:var(--muted);margin-top:1rem;padding:.6rem .9rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:0 4px 4px 0}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:1.5rem;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="gold-line"></div>
+  <h1>System Cenowy <span>KWhotel</span></h1>
+  <p>Cennik pokoi · Reguły rabatowe · Macierz zniżek</p>
+</header>
+
+<main>
+
+  <!-- RULES -->
+  <section>
+    <h2 class="sec-title">Reguły cenowe</h2>
+    <div class="rules">
+      <div class="rule-card wknd">
+        <div class="rule-icon">⬡</div>
+        <div>
+          <div class="rule-label">Noc weekendowa (Pt / Sob)</div>
+          <div class="rule-val">Brak zniżki tygodniowej — cena bazowa</div>
+        </div>
+      </div>
+      <div class="rule-card los3">
+        <div class="rule-icon">✦</div>
+        <div>
+          <div class="rule-label">Min. 3 noce — wszystkie doby</div>
+          <div class="rule-val">−10 zł od osoby / noc</div>
+        </div>
+      </div>
+      <div class="rule-card los6">
+        <div class="rule-icon">✦</div>
+        <div>
+          <div class="rule-label">Min. 6 nocy — wszystkie doby</div>
+          <div class="rule-val">Dodatkowo −10 zł od osoby / noc<br><span style="font-size:.8rem;color:var(--soft)">łącznie −20 zł od osoby / noc</span></div>
+        </div>
+      </div>
+      <div class="rule-card" style="background:var(--gold-light);border-color:rgba(184,148,63,.3)">
+        <div class="rule-icon" style="background:rgba(184,148,63,.2);color:var(--gold)">◈</div>
+        <div>
+          <div class="rule-label">Noc tygodniowa (Nd–Czw)</div>
+          <div class="rule-val">−15 zł od osoby / noc<br><span style="font-size:.8rem;color:var(--soft)">obowiązuje zawsze</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE TABLE -->
+  <section>
+    <h2 class="sec-title">Cennik pokoi — cena za pokój / noc (PLN)</h2>
+    <div class="tbl-wrap">
+      <table id="ptbl">
+        <thead>
+          <tr>
+            <th>Kategoria</th>
+            <th>1 os.</th><th>2 os.</th><th>3 os.</th><th>4 os.</th><th>5 os.</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- DISCOUNT MATRIX -->
+  <section>
+    <h2 class="sec-title">Macierz zniżek — skuteczna cena i % od bazy</h2>
+    <div class="sel-row">
+      <div class="sel-group">
+        <label>Kategoria pokoju</label>
+        <select id="rsel"></select>
+      </div>
+      <div class="sel-group">
+        <label>Liczba osób</label>
+        <select id="osel"></select>
+      </div>
+    </div>
+    <div class="mat-wrap">
+      <table id="mtbl"><thead></thead><tbody></tbody></table>
+    </div>
+    <div class="smry" id="smry"></div>
+  </section>
+
+</main>
+
+<footer>KWhotel · System Cenowy v2 · Zniżka tygodniowa −15 zł / os. / noc</footer>
+
+<script>
+const ROOMS = [
+  { name: 'Classic',              prices: {1:320, 2:480} },
+  { name: 'Twin Classic+',        prices: {2:480, 3:640} },
+  { name: 'Classic Eco',          prices: {1:300, 2:450} },
+  { name: 'Double Lux',           prices: {1:360, 2:520} },
+  { name: 'Twin Lux+',            prices: {2:530, 3:690, 4:850} },
+  { name: 'Apartament Grand Lux+',prices: {3:820, 4:990, 5:1160} },
+];
+
+// ── VALIDITY: which (nights, weekendNights) combos are physically possible ──
+// Weekend nights = Fri night + Sat night (max 2 per week)
+// N=6: any 6 consecutive nights always includes at least 1 of Fri/Sat → min W=1
+// N=7: full week always includes both Fri and Sat → W must be exactly 2
+function isValid(n, w) {
+  if (w > 2)              return false; // max 2 weekend nights in a week
+  if (w > n)              return false; // can't exceed total nights
+  if (n === 6 && w === 0) return false; // 6 nights always crosses Fri or Sat
+  if (n === 7 && w !== 2) return false; // 7 nights always crosses both Fri AND Sat
+  return true;
+}
+
+function losDiscount(n) { return n >= 6 ? 20 : n >= 3 ? 10 : 0; }
+
+function calcNight(base, persons, nights, wknd) {
+  const ld  = losDiscount(nights);
+  const wdf = (nights - wknd) / nights; // fraction of weekday nights
+  const avg = base - persons * ld - persons * 15 * wdf;
+  return { avg: Math.round(avg), pct: Math.round((avg - base) / base * 1000) / 10 };
+}
+
+function cellBg(pct) {
+  if (pct < -0.05) {
+    const t = Math.min(Math.abs(pct) / 16, 1);
+    return `rgba(45,110,62,${(0.08 + t * 0.38).toFixed(2)})`;
+  }
+  return 'transparent';
+}
+
+// ── PRICE TABLE ──
+function buildPriceTable() {
+  const tbody = document.querySelector('#ptbl tbody');
+  tbody.innerHTML = ROOMS.map(r => `
+    <tr>
+      <td>${r.name}</td>
+      ${[1,2,3,4,5].map(p => r.prices[p]
+        ? `<td class="price-cell">${r.prices[p]} zł</td>`
+        : `<td class="na">—</td>`
+      ).join('')}
+    </tr>`).join('');
+}
+
+// ── SELECTORS ──
+function buildRoomSel() {
+  const rs = document.getElementById('rsel');
+  ROOMS.forEach((r, i) => {
+    const o = document.createElement('option');
+    o.value = i; o.text = r.name; rs.appendChild(o);
+  });
+  rs.addEventListener('change', () => { buildOccSel(); buildMatrix(); });
+  buildOccSel();
+}
+
+function buildOccSel() {
+  const ri  = +document.getElementById('rsel').value;
+  const os  = document.getElementById('osel');
+  os.innerHTML = '';
+  const keys = Object.keys(ROOMS[ri].prices);
+  keys.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p; o.text = `${p} os. — ${ROOMS[ri].prices[p]} zł`; os.appendChild(o);
+  });
+  os.value = keys[keys.length - 1];
+  os.removeEventListener('change', buildMatrix);
+  os.addEventListener('change', buildMatrix);
+  buildMatrix();
+}
+
+// ── MATRIX ──
+const TIER_LABELS = {
+  3: '▸ Min. 3 noce — dodatkowe −10 zł / os. / noc (na wszystkie doby)',
+  6: '▸ Min. 6 nocy — dodatkowe −10 zł / os. / noc łącznie (−20 zł / os. / noc na wszystkie doby)',
+};
+
+function buildMatrix() {
+  const ri      = +document.getElementById('rsel').value;
+  const persons = +document.getElementById('osel').value;
+  const base    = ROOMS[ri].prices[persons];
+
+  // Header
+  document.querySelector('#mtbl thead').innerHTML = `
+    <tr>
+      <th style="text-align:left">Noce</th>
+      <th>0 weekendowych</th>
+      <th>1 weekendowa</th>
+      <th>2 weekendowe</th>
+    </tr>`;
+
+  let rows = '';
+  let allPcts = [];
+
+  for (let n = 1; n <= 7; n++) {
+    if (TIER_LABELS[n]) {
+      rows += `<tr class="tier-row"><td colspan="4">${TIER_LABELS[n]}</td></tr>`;
+    }
+    const nightLabel = n === 1 ? 'noc' : n < 5 ? 'noce' : 'nocy';
+    rows += `<tr><td>${n} ${nightLabel}</td>`;
+
+    for (let w = 0; w <= 2; w++) {
+      if (!isValid(n, w)) {
+        rows += `<td class="na-cell">—</td>`;
+        continue;
+      }
+      const { avg, pct } = calcNight(base, persons, n, w);
+      allPcts.push(pct);
+      const tc  = pct < -0.05 ? '#1e5229' : '#1c1c1c';
+      const bg  = cellBg(pct);
+      const sign = pct > 0 ? '+' : '';
+      rows += `
+        <td style="background:${bg}">
+          <div class="cell-pct" style="color:${tc}">${sign}${pct}%</div>
+          <div class="cell-sub">${avg} zł / noc</div>
+        </td>`;
+    }
+    rows += '</tr>';
+  }
+
+  document.querySelector('#mtbl tbody').innerHTML = rows;
+
+  // Summary
+  const mn   = Math.min(...allPcts);
+  const mx   = Math.max(...allPcts);
+  const mnP  = Math.round(base * (1 + mn / 100));
+  const mxP  = Math.round(base * (1 + mx / 100));
+  document.getElementById('smry').innerHTML = `
+    <div class="sc"><div class="l">Cena bazowa</div><div class="v base">${base} zł</div></div>
+    <div class="sc"><div class="l">Maks. zniżka</div><div class="v good">${Math.abs(mn)}% → ${mnP} zł</div></div>
+    <div class="sc"><div class="l">Min. zniżka (tygodniowa)</div><div class="v" style="color:#5a5a5a">${Math.abs(mx)}% → ${mxP} zł</div></div>
+    <div class="sc"><div class="l">Rozpiętość cenowa</div><div class="v">${mxP - mnP} zł / noc</div></div>`;
+}
+
+buildPriceTable();
+buildRoomSel();
+</script>
+</body>
+</html>
