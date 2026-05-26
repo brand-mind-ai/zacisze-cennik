@@ -9,20 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --brown:#2d1b0e; --brown-mid:#4a2e1a; --gold:#b8943f; --gold-light:#f5edda;
-  --green:#2d6e3e; --green-bg:rgba(45,110,62,.09);
-  --text:#1c1c1c; --soft:#5a5a5a; --muted:#9a9a9a;
-  --border:#e2ddd6; --bg:#f8f6f2; --white:#ffffff;
+  --brown:#2d1b0e;--gold:#b8943f;--gold-light:#f5edda;
+  --green:#2d6e3e;--green-bg:rgba(45,110,62,.09);
+  --text:#1c1c1c;--soft:#5a5a5a;--muted:#9a9a9a;
+  --border:#e2ddd6;--bg:#f8f6f2;--white:#ffffff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
-
 header{background:var(--brown);padding:3rem 2rem 2.5rem;text-align:center}
 header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,4.5vw,2.8rem);color:#fff;letter-spacing:.04em}
 header h1 span{color:var(--gold);font-style:italic}
-header p{color:rgba(255,255,255,.5);font-size:.75rem;margin-top:.7rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase}
+header p{color:rgba(255,255,255,.5);font-size:.75rem;margin-top:.7rem;letter-spacing:.12em;text-transform:uppercase}
 .gold-line{width:40px;height:2px;background:var(--gold);margin:1.2rem auto .8rem}
-
 main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
 section{margin-bottom:3.5rem}
 .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--brown);border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:1.4rem;letter-spacing:.02em}
@@ -40,47 +38,41 @@ section{margin-bottom:3.5rem}
 /* CALCULATOR */
 .calc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.5rem 1.8rem;display:flex;flex-direction:column;gap:1.4rem}
 .calc-row{display:grid;gap:1rem}
-.calc-row.r1{grid-template-columns:1fr}
-.calc-row.r2{grid-template-columns:repeat(3,1fr)}
-.calc-row.r3{grid-template-columns:1fr 1fr}
-@media(max-width:600px){.calc-row.r2,.calc-row.r3{grid-template-columns:1fr}}
-
+.r1{grid-template-columns:1fr}
+.r2{grid-template-columns:repeat(3,1fr)}
+.r3{grid-template-columns:1fr 1fr}
+@media(max-width:600px){.r2,.r3{grid-template-columns:1fr}}
 .calc-field label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:block;margin-bottom:.4rem;font-weight:500}
 .calc-field select{width:100%}
-
-/* Steppers */
 .stepper{display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.stepper button{width:40px;height:40px;border:none;background:var(--bg);cursor:pointer;font-size:1.1rem;font-weight:300;flex-shrink:0;transition:background .15s}
+.stepper button{width:40px;height:40px;border:none;background:var(--bg);cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:background .15s}
 .stepper button:hover:not(:disabled){background:var(--gold-light)}
 .stepper button:disabled{opacity:.3;cursor:not-allowed}
-.stepper .sval{flex:1;text-align:center;font-size:.95rem;font-weight:500}
-.stepper .slabel{font-size:.68rem;color:var(--muted);text-align:center;padding:0 4px}
-.capacity-note{font-size:.7rem;color:var(--muted);margin-top:.3rem;text-align:center}
-
-/* Pill toggles */
+.sval{flex:1;text-align:center;font-size:.95rem;font-weight:500}
+.slabel{font-size:.68rem;color:var(--muted);text-align:center;padding:0 4px}
+.cap-note{font-size:.7rem;color:var(--muted);margin-top:.3rem;text-align:center}
+.min-note{font-size:.7rem;color:var(--gold);margin-top:.3rem;text-align:center;font-weight:500}
 .toggle-group{display:flex;gap:.4rem;flex-wrap:wrap}
 .tpill{padding:.45rem .9rem;border-radius:20px;border:1px solid var(--border);font-size:.82rem;cursor:pointer;background:var(--white);color:var(--soft);transition:all .15s;white-space:nowrap}
 .tpill:hover:not(:disabled){border-color:var(--brown);color:var(--text)}
 .tpill.active{background:var(--brown);color:#fff;border-color:var(--brown);font-weight:500}
+.tpill.meal-on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:500}
 .tpill:disabled{opacity:.3;cursor:not-allowed}
-.tpill.meal-active{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:500}
 
-/* Result */
+/* RESULT */
 .calc-result{background:var(--bg);border-radius:10px;padding:1.2rem 1.4rem}
 .res-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
 .res-total-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.3rem}
 .res-total-price{font-size:2rem;font-weight:600;color:var(--brown);line-height:1}
 .res-total-price small{font-size:.85rem;font-weight:400;color:var(--soft)}
-.res-saving{text-align:right}
-.res-saving .s-label{font-size:.7rem;color:var(--muted);margin-bottom:.2rem}
+.res-saving .s-label{font-size:.7rem;color:var(--muted);margin-bottom:.2rem;text-align:right}
 .res-saving .s-val{font-size:1.1rem;font-weight:600;color:var(--green)}
-.res-saving .s-pct{font-size:.82rem;color:var(--green)}
+.res-saving .s-pct{font-size:.82rem;color:var(--green);text-align:right}
 .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}
-.res-line{display:flex;flex-direction:column;gap:.1rem}
 .res-line .rl-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .res-line .rl-val{font-size:.9rem;font-weight:500;color:var(--text)}
 .res-line .rl-val.disc{color:var(--green)}
-.res-line .rl-val.meal{color:#b8943f}
+.res-line .rl-val.meal{color:var(--gold)}
 
 /* RULES */
 .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem}
@@ -104,8 +96,6 @@ tbody td{padding:.75rem 1rem;font-size:.9rem;text-align:center;border-bottom:1px
 tbody td:first-child{text-align:left;font-weight:500;font-size:.85rem}
 tbody tr:last-child td{border-bottom:none}
 .na{color:var(--muted);font-size:.8rem}
-
-/* CHILDREN */
 .child-toggle{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
 .ctab{padding:.4rem 1rem;border-radius:20px;border:1px solid var(--border);font-size:.82rem;cursor:pointer;background:var(--white);color:var(--soft);transition:all .15s}
 .ctab.active{background:var(--brown);color:#fff;border-color:var(--brown)}
@@ -115,8 +105,8 @@ tbody tr:last-child td{border-bottom:none}
 .child-rows{padding:.5rem 1rem .8rem}
 .child-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:.5px solid var(--border);font-size:.85rem}
 .child-row:last-child{border-bottom:none}
-.child-row .cr-label{color:var(--soft)}
-.child-row .cr-val{font-weight:600}
+.cr-label{color:var(--soft)}
+.cr-val{font-weight:600}
 .child-free{text-align:center;padding:.8rem;font-size:.85rem;color:var(--green);font-weight:500;background:var(--green-bg);border-radius:6px;margin-top:.8rem}
 .child-adult{text-align:center;padding:.5rem;font-size:.78rem;color:var(--muted);margin-top:.5rem}
 
@@ -135,6 +125,7 @@ select:focus{outline:none;border-color:var(--brown)}
 #mtbl tbody td:first-child{border-left:none;text-align:left;font-size:.85rem;font-weight:500}
 #mtbl tbody tr:last-child td{border-bottom:none}
 .tier-row td{background:#f0eee9 !important;font-size:.72rem;color:var(--soft);padding:.4rem .8rem !important;border-left:none !important;text-align:left !important}
+.dimmed td{opacity:.35}
 .cell-pct{font-size:.95rem;font-weight:600;font-variant-numeric:tabular-nums}
 .cell-sub{font-size:.75rem;color:var(--soft);margin-top:2px;font-variant-numeric:tabular-nums}
 .na-cell{color:var(--muted);font-size:.8rem}
@@ -145,224 +136,230 @@ select:focus{outline:none;border-color:var(--brown)}
 .sc .v{font-size:1.1rem;font-weight:600}
 .sc .v.good{color:var(--green)}
 .sc .v.base{color:var(--brown)}
-
+.mat-note{font-size:.75rem;color:var(--muted);margin-top:.8rem;padding:.5rem .7rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:0 4px 4px 0}
 footer{text-align:center;padding:1.5rem;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}
 </style>
 </head>
 <body>
-
 <header>
   <div class="gold-line"></div>
   <h1>Cennik Pokoi — <span>Hotel Zacisze w Turawie</span></h1>
-  <p>Oferty Sezonowe &nbsp;·&nbsp; Zniżki dla Dzieci &nbsp;·&nbsp; Zniżki poza Weekendem &nbsp;·&nbsp; Zniżki dla Dłuższych Pobytów</p>
+  <p>Oferty Sezonowe · Zniżki dla Dzieci · Zniżki poza Weekendem · Zniżki dla Dłuższych Pobytów</p>
 </header>
-
 <main>
 
-  <!-- OFFER TABS -->
-  <section>
-    <h2 class="sec-title">Oferta sezonowa</h2>
-    <div class="offer-tabs" id="offer-tabs"></div>
-  </section>
+<!-- OFFER TABS -->
+<section>
+  <h2 class="sec-title">Oferta sezonowa</h2>
+  <div class="offer-tabs" id="offer-tabs"></div>
+</section>
 
-  <!-- CALCULATOR -->
-  <section>
-    <h2 class="sec-title">Kalkulator ceny pobytu</h2>
-    <div class="calc-card">
-
-      <!-- Row 1: Room -->
-      <div class="calc-row r1">
-        <div class="calc-field">
-          <label>Kategoria pokoju</label>
-          <select id="calc-room"></select>
+<!-- CALCULATOR -->
+<section>
+  <h2 class="sec-title">Kalkulator ceny pobytu</h2>
+  <div class="calc-card">
+    <div class="calc-row r1">
+      <div class="calc-field">
+        <label>Kategoria pokoju</label>
+        <select id="calc-room"></select>
+      </div>
+    </div>
+    <div class="calc-row r2">
+      <div class="calc-field">
+        <label>Liczba nocy</label>
+        <div class="stepper">
+          <button id="bn-" onclick="changeNights(-1)">−</button>
+          <span class="sval" id="nights-val">3</span>
+          <button id="bn+" onclick="changeNights(1)">+</button>
+        </div>
+        <div class="min-note" id="min-note"></div>
+      </div>
+      <div class="calc-field">
+        <label>Dorośli</label>
+        <div class="stepper">
+          <button id="ba-" onclick="changeAdults(-1)">−</button>
+          <div style="flex:1;text-align:center">
+            <div class="sval" id="adults-val">—</div>
+            <div class="slabel" id="adults-range"></div>
+          </div>
+          <button id="ba+" onclick="changeAdults(1)">+</button>
         </div>
       </div>
-
-      <!-- Row 2: Nights / Adults / Children -->
-      <div class="calc-row r2">
-        <div class="calc-field">
-          <label>Liczba nocy</label>
-          <div class="stepper">
-            <button id="bn-" onclick="changeNights(-1)">−</button>
-            <span class="sval" id="nights-val">3</span>
-            <button id="bn+" onclick="changeNights(1)">+</button>
+      <div class="calc-field">
+        <label>Dzieci 3–12 lat</label>
+        <div class="stepper">
+          <button id="bc-" onclick="changeChildren(-1)">−</button>
+          <div style="flex:1;text-align:center">
+            <div class="sval" id="children-val">0</div>
+            <div class="slabel" id="children-max"></div>
           </div>
+          <button id="bc+" onclick="changeChildren(1)">+</button>
         </div>
-        <div class="calc-field">
-          <label>Dorośli</label>
-          <div class="stepper">
-            <button id="ba-" onclick="changeAdults(-1)">−</button>
-            <div style="flex:1;text-align:center">
-              <div class="sval" id="adults-val">—</div>
-              <div class="slabel" id="adults-range"></div>
-            </div>
-            <button id="ba+" onclick="changeAdults(1)">+</button>
-          </div>
-        </div>
-        <div class="calc-field">
-          <label>Dzieci 3–12 lat</label>
-          <div class="stepper">
-            <button id="bc-" onclick="changeChildren(-1)">−</button>
-            <div style="flex:1;text-align:center">
-              <div class="sval" id="children-val">0</div>
-              <div class="slabel" id="children-max"></div>
-            </div>
-            <button id="bc+" onclick="changeChildren(1)">+</button>
-          </div>
-          <div class="capacity-note" id="cap-note"></div>
+        <div class="cap-note" id="cap-note"></div>
+      </div>
+    </div>
+    <div class="calc-row r3">
+      <div class="calc-field">
+        <label>Wyżywienie</label>
+        <div class="toggle-group" id="meal-toggle">
+          <button class="tpill meal-on" data-meal="0" onclick="setMeal(0)">Pobyt ze śniadaniem</button>
+          <button class="tpill" data-meal="1" onclick="setMeal(1)">Pobyt ze śniadaniem i obiadokolacją</button>
         </div>
       </div>
-
-      <!-- Row 3: Meal + Weekend toggles -->
-      <div class="calc-row r3">
-        <div class="calc-field">
-          <label>Wyżywienie</label>
-          <div class="toggle-group" id="meal-toggle">
-            <button class="tpill meal-active" data-meal="0" onclick="setMeal(0)">Pobyt ze śniadaniem</button>
-            <button class="tpill" data-meal="1" onclick="setMeal(1)">Pobyt ze śniadaniem i obiadokolacją</button>
-          </div>
-        </div>
-        <div class="calc-field">
-          <label>Typ pobytu</label>
-          <div class="toggle-group" id="weekend-toggle">
-            <button class="tpill active" data-w="0" onclick="setWeekend(0)">Pobyt w tygodniu</button>
-            <button class="tpill" data-w="2" onclick="setWeekend(2)">Pobyt obejmuje weekend</button>
-            <button class="tpill" data-w="1" onclick="setWeekend(1)">Pobyt obejmuje 1 noc w weekend</button>
-          </div>
+      <div class="calc-field">
+        <label>Typ pobytu</label>
+        <div class="toggle-group" id="weekend-toggle">
+          <button class="tpill active" data-w="0" onclick="setWeekend(0)">Pobyt w tygodniu</button>
+          <button class="tpill" data-w="2" onclick="setWeekend(2)">Pobyt obejmuje weekend</button>
+          <button class="tpill" data-w="1" onclick="setWeekend(1)">Pobyt obejmuje 1 noc w weekend</button>
         </div>
       </div>
-
-      <!-- Result -->
-      <div class="calc-result" id="calc-result"></div>
-
     </div>
-  </section>
+    <div class="calc-result" id="calc-result"></div>
+  </div>
+</section>
 
-  <!-- RULES -->
-  <section>
-    <h2 class="sec-title">Reguły aktywnej oferty</h2>
-    <div class="rules" id="rules-container"></div>
-  </section>
+<!-- RULES -->
+<section>
+  <h2 class="sec-title">Reguły aktywnej oferty</h2>
+  <div class="rules" id="rules-container"></div>
+</section>
 
-  <!-- ADULT PRICE TABLE -->
-  <section>
-    <h2 class="sec-title">Cennik podstawowy — dorośli &amp; dzieci powyżej 12 lat (PLN / noc)</h2>
-    <div class="tbl-wrap">
-      <table id="ptbl">
-        <thead><tr>
-          <th>Kategoria pokoju</th>
-          <th>1 os.</th><th>2 os.</th><th>3 os.</th><th>4 os.</th><th>5 os.</th>
-        </tr></thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </section>
+<!-- ADULT PRICE TABLE -->
+<section>
+  <h2 class="sec-title">Cennik podstawowy — dorośli &amp; dzieci powyżej 12 lat (PLN / noc)</h2>
+  <div class="tbl-wrap">
+    <table id="ptbl">
+      <thead><tr>
+        <th>Kategoria pokoju</th>
+        <th>1 os.</th><th>2 os.</th><th>3 os.</th><th>4 os.</th><th>5 os.</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
 
-  <!-- CHILDREN PRICING -->
-  <section>
-    <h2 class="sec-title">Cennik dla dzieci (3–12 lat) — cena za noc</h2>
-    <div class="child-toggle">
-      <button class="ctab active" onclick="setChildRoom(0,this)">Pokoje standard (110 zł bazowo)</button>
-      <button class="ctab" onclick="setChildRoom(1,this)">Apartament Grand Lux+ (120 zł bazowo)</button>
-    </div>
-    <div class="child-grid" id="child-grid"></div>
-    <div class="child-free">Dzieci poniżej 3 lat — nocleg zawsze bezpłatny</div>
-    <div class="child-adult">Dzieci powyżej 12 lat — cena dorosłego · zniżki jak dla dorosłych</div>
-  </section>
+<!-- CHILDREN PRICING -->
+<section>
+  <h2 class="sec-title">Cennik dla dzieci (3–12 lat) — cena za noc</h2>
+  <div class="child-toggle">
+    <button class="ctab active" onclick="setChildRoom(0,this)">Pokoje standard (120 zł bazowo)</button>
+    <button class="ctab" onclick="setChildRoom(1,this)">Apartament Grand Lux+ (130 zł bazowo)</button>
+  </div>
+  <div class="child-grid" id="child-grid"></div>
+  <div class="child-free">Dzieci poniżej 3 lat — nocleg zawsze bezpłatny</div>
+  <div class="child-adult">Dzieci powyżej 12 lat — cena dorosłego · zniżki jak dla dorosłych</div>
+</section>
 
-  <!-- DISCOUNT MATRIX -->
-  <section>
-    <h2 class="sec-title">Macierz zniżek — dorośli · skuteczna cena i % od bazy</h2>
-    <div class="sel-row">
-      <div class="sel-group"><label>Kategoria pokoju</label><select id="rsel"></select></div>
-      <div class="sel-group"><label>Liczba osób</label><select id="osel"></select></div>
-    </div>
-    <div class="mat-wrap"><table id="mtbl"><thead></thead><tbody></tbody></table></div>
-    <div class="smry" id="smry"></div>
-  </section>
+<!-- DISCOUNT MATRIX -->
+<section>
+  <h2 class="sec-title">Macierz zniżek — dorośli · skuteczna cena i % od bazy</h2>
+  <div class="sel-row">
+    <div class="sel-group"><label>Kategoria pokoju</label><select id="rsel"></select></div>
+    <div class="sel-group"><label>Liczba osób</label><select id="osel"></select></div>
+  </div>
+  <div class="mat-wrap"><table id="mtbl"><thead></thead><tbody></tbody></table></div>
+  <div id="mat-note" class="mat-note" style="display:none"></div>
+  <div class="smry" id="smry"></div>
+</section>
 
 </main>
 <footer>Hotel Zacisze w Turawie · Cennik Pokoi v6 · Trzy oferty sezonowe</footer>
 
 <script>
-// ── DATA ──
+// ─── ROOMS — ceny podniesione o 10 zł × liczba osób ───
 const ROOMS = [
-  {name:'Classic',              prices:{1:320,2:480}},
-  {name:'Twin Classic+',        prices:{2:480,3:640}},
-  {name:'Classic Eco',          prices:{1:300,2:450}},
-  {name:'Double Lux',           prices:{1:360,2:520}},
-  {name:'Twin Lux+',            prices:{2:530,3:690,4:850}},
-  {name:'Apartament Grand Lux+',prices:{3:820,4:990,5:1160}},
+  {name:'Classic',              prices:{1:330, 2:500}},
+  {name:'Twin Classic+',        prices:{2:500, 3:670}},
+  {name:'Classic Eco',          prices:{1:310, 2:470}},
+  {name:'Double Lux',           prices:{1:370, 2:540}},
+  {name:'Twin Lux+',            prices:{2:550, 3:720, 4:890}},
+  {name:'Apartament Grand Lux+',prices:{3:850, 4:1030, 5:1210}},
 ];
 
+// Ceny dzieci: standard 120 zł (+10), Grand Lux+ 130 zł (+10)
+const CHILD_STD = 120, CHILD_GRAND = 130;
 const DINNER_ADULT = 80, DINNER_CHILD = 50;
 
+// ─── LOS discount — offer-aware ───
+// oi: 0=Standardowa, 1=Sezonowa, 2=Zimowa
+// Nowa reguła: progowe 4 noce (było 3); dla oi≠0 dodatkowe −5 zł za 2–3 noce
+function los(n, oi) {
+  if (n >= 6) return 20;
+  if (n >= 4) return 10;
+  if (n >= 2 && oi !== 0) return 5;   // tylko Sezonowa i Zimowa
+  return 0;
+}
+
+// ─── OFFERS ───
 const OFFERS = [
   {
     name:'Oferta Standardowa', period:'20 czerwca – 10 września', color:'#b8943f',
+    minNights:2,
     weekdayDisc:15, weekdayDiscC:10, globalDisc:0, globalDiscC:0,
     rules:[
-      {icon:'☀',hl:false,label:'Sezon letni',val:'20 czerwca – 10 września',sub:'Dziedziczone z cennika podstawowego'},
+      {icon:'☀',hl:false,label:'Sezon letni · min. pobyt 2 noce',val:'20 czerwca – 10 września',sub:'Dziedziczone z cennika podstawowego'},
       {icon:'◈',hl:true, label:'Noc tygodniowa — Nd do Pt rano',val:'−15 zł od osoby dorosłej / noc',child:'−10 zł dla dzieci 3–12 lat / noc'},
       {icon:'⬡',hl:false,label:'Noc weekendowa (Pt–Sb, Sb–Nd)',val:'Cena bazowa — brak zniżki',sub:'Piątkowe i sobotnie noce bez zniżki'},
-      {icon:'✦',hl:false,label:'Min. 3 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
+      {icon:'✦',hl:false,label:'Min. 4 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
       {icon:'✦',hl:false,label:'Min. 6 nocy — wszystkie doby',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
     ],
     isNow(m,d){return(m===6&&d>=20)||m===7||m===8||(m===9&&d<=10)}
   },
   {
     name:'Zniżka Sezonowa', period:'1 kwietnia – 19 czerwca · 11 września – 10 listopada', color:'#4a7c3f',
+    minNights:1,
     weekdayDisc:15, weekdayDiscC:10, globalDisc:20, globalDiscC:15,
     rules:[
       {icon:'🍂',hl:false,label:'Sezon przejściowy',val:'1 kwi – 19 cze · 11 wrz – 10 lis',sub:'Oferta Standardowa + zniżka sezonowa'},
       {icon:'◈',hl:true, label:'Zniżka sezonowa — wszystkie doby',val:'−20 zł od osoby dorosłej / noc',child:'−15 zł dla dzieci 3–12 lat / noc'},
       {icon:'◈',hl:true, label:'Noc tygodniowa — Nd do Pt rano',val:'Dodatkowo −15 zł od osoby dorosłej / noc',child:'Dodatkowo −10 zł dla dzieci 3–12 lat',sub:'Łącznie −35 zł dla dorosłych za noc tygodniową'},
       {icon:'⬡',hl:false,label:'Noc weekendowa',val:'−20 zł od osoby dorosłej / noc',child:'−15 zł dla dzieci 3–12 lat',sub:'Tylko zniżka sezonowa'},
-      {icon:'✦',hl:false,label:'Min. 3 noce',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
-      {icon:'✦',hl:false,label:'Min. 6 nocy',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
+      {icon:'✦',hl:true, label:'2–3 noce — wszystkie doby',val:'−5 zł od osoby / noc',child:'−5 zł dla dzieci 3–12 lat / noc',sub:'Dodatkowa zniżka poza sezonem letnim'},
+      {icon:'✦',hl:false,label:'Min. 4 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
+      {icon:'✦',hl:false,label:'Min. 6 nocy — wszystkie doby',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
     ],
     isNow(m,d){return m===4||m===5||(m===6&&d<20)||(m===9&&d>=11)||m===10||(m===11&&d<=10)}
   },
   {
     name:'Oferta Zimowa', period:'11 listopada – 31 marca', color:'#3a5f7a',
+    minNights:1,
     weekdayDisc:15, weekdayDiscC:10, globalDisc:50, globalDiscC:35,
     rules:[
       {icon:'❄',hl:false,label:'Sezon zimowy',val:'11 listopada – 31 marca',sub:'Oferta Standardowa + zniżka zimowa'},
       {icon:'◈',hl:true, label:'Zniżka zimowa — wszystkie doby',val:'−50 zł od osoby dorosłej / noc',child:'−35 zł dla dzieci 3–12 lat / noc'},
       {icon:'◈',hl:true, label:'Noc tygodniowa — Nd do Pt rano',val:'Dodatkowo −15 zł od osoby dorosłej / noc',child:'Dodatkowo −10 zł dla dzieci 3–12 lat',sub:'Łącznie −65 zł dla dorosłych za noc tygodniową'},
       {icon:'⬡',hl:false,label:'Noc weekendowa',val:'−50 zł od osoby dorosłej / noc',child:'−35 zł dla dzieci 3–12 lat',sub:'Tylko zniżka zimowa'},
-      {icon:'✦',hl:false,label:'Min. 3 noce',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
-      {icon:'✦',hl:false,label:'Min. 6 nocy',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
+      {icon:'✦',hl:true, label:'2–3 noce — wszystkie doby',val:'−5 zł od osoby / noc',child:'−5 zł dla dzieci 3–12 lat / noc',sub:'Dodatkowa zniżka poza sezonem letnim'},
+      {icon:'✦',hl:false,label:'Min. 4 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
+      {icon:'✦',hl:false,label:'Min. 6 nocy — wszystkie doby',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
     ],
     isNow(m,d){return(m===11&&d>=11)||m===12||m===1||m===2||m===3}
   }
 ];
 
-// ── GLOBAL STATE ──
+// ─── STATE ───
 const now=new Date(), NM=now.getMonth()+1, ND=now.getDate();
 let activeOffer=0;
 OFFERS.forEach((o,i)=>{if(o.isNow(NM,ND)) activeOffer=i;});
 let childRoomType=0;
-
-// Calculator state
 let cRoom=0, cNights=3, cAdults=1, cChildren=0, cMeal=0, cWeekend=0;
 
-// ── HELPERS ──
+// ─── HELPERS ───
 function isValid(n,w){
   if(w>2||w>n) return false;
   if(n===6&&w===0) return false;
   if(n===7&&w!==2) return false;
   return true;
 }
-function los(n){return n>=6?20:n>=3?10:0;}
 function roomKeys(ri){return Object.keys(ROOMS[ri].prices).map(Number).sort((a,b)=>a-b);}
 function minA(ri){return roomKeys(ri)[0];}
 function maxA(ri){return roomKeys(ri)[roomKeys(ri).length-1];}
-function maxC(ri,adults){return maxA(ri)-adults;}
-function isGrand(ri){return ri===5;}
-function cBase(ri){return isGrand(ri)?120:110;}
+function maxC(ri,a){return maxA(ri)-a;}
+function childBase(ri){return ri===5?CHILD_GRAND:CHILD_STD;}
+function minNights(){return OFFERS[activeOffer].minNights;}
 
-// ── OFFER TABS ──
+// ─── OFFER TABS ───
 function buildOfferTabs(){
   document.getElementById('offer-tabs').innerHTML=OFFERS.map((o,i)=>`
     <div class="offer-tab${i===activeOffer?' active':''}" style="--tab-color:${o.color}" onclick="selectOffer(${i})">
@@ -373,7 +370,7 @@ function buildOfferTabs(){
     </div>`).join('');
 }
 
-// ── RULES ──
+// ─── RULES ───
 function buildRules(){
   const o=OFFERS[activeOffer];
   document.getElementById('rules-container').innerHTML=o.rules.map(r=>`
@@ -383,11 +380,10 @@ function buildRules(){
         <div class="rule-val">${r.val}</div>
         ${r.child?`<div class="rule-child">${r.child}</div>`:''}
         ${r.sub?`<div class="rule-sub">${r.sub}</div>`:''}
-      </div>
-    </div>`).join('');
+      </div></div>`).join('');
 }
 
-// ── PRICE TABLE ──
+// ─── PRICE TABLE ───
 function buildPriceTable(){
   document.querySelector('#ptbl tbody').innerHTML=ROOMS.map(r=>`
     <tr><td>${r.name}</td>
@@ -395,7 +391,7 @@ function buildPriceTable(){
     </tr>`).join('');
 }
 
-// ── CALCULATOR ──
+// ─── CALCULATOR ───
 function initCalcRoom(){
   const sel=document.getElementById('calc-room');
   ROOMS.forEach((r,i)=>{const o=document.createElement('option');o.value=i;o.text=r.name;sel.appendChild(o);});
@@ -409,8 +405,7 @@ function initCalcRoom(){
 }
 
 function changeNights(d){
-  cNights=Math.max(1,Math.min(7,cNights+d));
-  // Auto-fix weekend selection if now invalid
+  cNights=Math.max(minNights(),Math.min(7,cNights+d));
   if(!isValid(cNights,cWeekend)){
     if(cNights===7) cWeekend=2;
     else if(cNights===6&&cWeekend===0) cWeekend=1;
@@ -425,10 +420,7 @@ function changeAdults(d){
   cChildren=Math.min(cChildren,maxC(cRoom,cAdults));
   updateCalc();
 }
-function changeChildren(d){
-  cChildren=Math.max(0,Math.min(maxC(cRoom,cAdults),cChildren+d));
-  updateCalc();
-}
+function changeChildren(d){cChildren=Math.max(0,Math.min(maxC(cRoom,cAdults),cChildren+d));updateCalc();}
 function setMeal(v){cMeal=v;updateCalc();}
 function setWeekend(v){if(isValid(cNights,v)){cWeekend=v;updateCalc();}}
 
@@ -437,20 +429,27 @@ function updateCalc(){
   const room=ROOMS[cRoom];
   const keys=roomKeys(cRoom);
   const aBase=room.prices[cAdults];
-  const cb=cBase(cRoom);
-  const ld=los(cNights);
+  const cb=childBase(cRoom);
+  const ld=los(cNights,activeOffer);
   const w=cWeekend, wdN=cNights-w;
+  const mn=minNights();
 
-  // Update steppers
+  // Enforce min nights for active offer
+  if(cNights<mn) { cNights=mn; }
+
+  // Displays
   document.getElementById('nights-val').textContent=cNights;
   document.getElementById('adults-val').textContent=cAdults;
   document.getElementById('adults-range').textContent=`min ${minA(cRoom)} · maks ${maxA(cRoom)}`;
   document.getElementById('children-val').textContent=cChildren;
   document.getElementById('children-max').textContent=`maks. ${maxC(cRoom,cAdults)}`;
   document.getElementById('cap-note').textContent=`Łącznie ${cAdults+cChildren} os. z maks. ${maxA(cRoom)}`;
+  const minN=document.getElementById('min-note');
+  if(mn>1){minN.textContent=`Minimalna długość pobytu: ${mn} noce`;minN.style.display='block';}
+  else minN.style.display='none';
 
-  // Button disabled states
-  document.getElementById('bn-').disabled=cNights<=1;
+  // Button states
+  document.getElementById('bn-').disabled=cNights<=mn;
   document.getElementById('bn+').disabled=cNights>=7;
   document.getElementById('ba-').disabled=keys.indexOf(cAdults)<=0;
   document.getElementById('ba+').disabled=keys.indexOf(cAdults)>=keys.length-1;
@@ -459,100 +458,71 @@ function updateCalc(){
 
   // Meal toggle
   document.querySelectorAll('#meal-toggle .tpill').forEach(b=>{
-    const m=+b.dataset.meal;
-    b.className='tpill'+(m===cMeal?' meal-active':'');
+    b.className='tpill'+(+b.dataset.meal===cMeal?' meal-on':'');
   });
 
-  // Weekend toggle — update active + disabled
+  // Weekend toggle
   document.querySelectorAll('#weekend-toggle .tpill').forEach(b=>{
-    const wv=+b.dataset.w;
-    const valid=isValid(cNights,wv);
+    const wv=+b.dataset.w, valid=isValid(cNights,wv);
     b.disabled=!valid;
     b.className='tpill'+(wv===cWeekend&&valid?' active':'');
   });
 
-  // PRICE CALCULATION
-  // Room component (with discounts applied)
-  const nightWd = aBase + cChildren*cb
-                - cAdults*(o.globalDisc + o.weekdayDisc + ld)
-                - cChildren*(o.globalDiscC + o.weekdayDiscC + ld);
-  const nightWe = aBase + cChildren*cb
-                - cAdults*(o.globalDisc + ld)
-                - cChildren*(o.globalDiscC + ld);
-  const roomTotal = Math.max(0, Math.round(wdN*nightWd + w*nightWe));
-
-  // Meal component (no discounts on meals)
-  const dinnerPerNight = cMeal===1 ? cAdults*DINNER_ADULT + cChildren*DINNER_CHILD : 0;
-  const mealTotal = cNights * dinnerPerNight;
-
-  // Base (no discounts, no dinner extra)
-  const basePerNight = aBase + cChildren*cb;
-  const baseTotal = cNights * basePerNight;
-
-  const grandTotal = roomTotal + mealTotal;
-  const roomSaved = baseTotal - roomTotal;
-  const savedPct = baseTotal>0 ? Math.round(roomSaved/baseTotal*100) : 0;
-  const avgPerNight = Math.round(grandTotal/cNights);
-
-  // Weekend label
-  const wLabel = w===0?'Pobyt w tygodniu':w===1?'1 noc weekendowa':'Weekend (2 noce weekendowe)';
-  const mLabel = cMeal===0?'Ze śniadaniem':'Ze śniadaniem i obiadokolacją';
+  // Price calculation
+  const nightWd=aBase+cChildren*cb - cAdults*(o.globalDisc+o.weekdayDisc+ld) - cChildren*(o.globalDiscC+o.weekdayDiscC+ld);
+  const nightWe=aBase+cChildren*cb - cAdults*(o.globalDisc+ld) - cChildren*(o.globalDiscC+ld);
+  const roomTotal=Math.max(0,Math.round(wdN*nightWd+w*nightWe));
+  const dinnerPN=cMeal===1?cAdults*DINNER_ADULT+cChildren*DINNER_CHILD:0;
+  const mealTotal=cNights*dinnerPN;
+  const basePN=aBase+cChildren*cb;
+  const baseTotal=cNights*basePN;
+  const grandTotal=roomTotal+mealTotal;
+  const saved=baseTotal-roomTotal;
+  const savedPct=baseTotal>0?Math.round(saved/baseTotal*100):0;
+  const wLabel=w===0?'Pobyt w tygodniu':w===1?'1 noc weekendowa':'Weekend (2 noce)';
+  const mLabel=cMeal===0?'Ze śniadaniem':'Ze śniadaniem i obiadokolacją';
 
   document.getElementById('calc-result').innerHTML=`
     <div class="res-header">
       <div>
-        <div class="res-total-label">Łączna cena pobytu · ${cNights} ${cNights===1?'noc':cNights<5?'noce':'nocy'} · ${wLabel} · ${mLabel}</div>
+        <div class="res-total-label">${cNights} ${cNights===1?'noc':cNights<5?'noce':'nocy'} · ${wLabel} · ${mLabel}</div>
         <div class="res-total-price">${grandTotal.toLocaleString('pl-PL')} zł <small>łącznie</small></div>
       </div>
       <div class="res-saving">
         <div class="s-label">Oszczędność na pokoju</div>
-        <div class="s-val">−${roomSaved.toLocaleString('pl-PL')} zł</div>
+        <div class="s-val">−${saved.toLocaleString('pl-PL')} zł</div>
         <div class="s-pct">${savedPct}% taniej niż baza</div>
       </div>
     </div>
     <div class="res-grid">
-      <div class="res-line">
-        <span class="rl-label">Cena bazowa pokoju</span>
-        <span class="rl-val">${baseTotal.toLocaleString('pl-PL')} zł</span>
-      </div>
-      <div class="res-line">
-        <span class="rl-label">Zniżki sezonowe i tygodniowe</span>
-        <span class="rl-val disc">−${roomSaved.toLocaleString('pl-PL')} zł</span>
-      </div>
-      ${cMeal===1?`
-      <div class="res-line">
-        <span class="rl-label">Obiadokolacja (${cNights}×${dinnerPerNight} zł)</span>
-        <span class="rl-val meal">+${mealTotal.toLocaleString('pl-PL')} zł</span>
-      </div>`:''}
-      <div class="res-line">
-        <span class="rl-label">Śr. cena za noc</span>
-        <span class="rl-val">${avgPerNight.toLocaleString('pl-PL')} zł</span>
-      </div>
-      <div class="res-line">
-        <span class="rl-label">Osoby</span>
-        <span class="rl-val">${cAdults} dor.${cChildren?` + ${cChildren} dz. (3–12 lat)`:''}</span>
-      </div>
+      <div class="res-line"><div class="rl-label">Cena bazowa pokoju</div><div class="rl-val">${baseTotal.toLocaleString('pl-PL')} zł</div></div>
+      <div class="res-line"><div class="rl-label">Zniżki</div><div class="rl-val disc">−${saved.toLocaleString('pl-PL')} zł</div></div>
+      ${cMeal===1?`<div class="res-line"><div class="rl-label">Obiadokolacja (${cNights}×${dinnerPN} zł)</div><div class="rl-val meal">+${mealTotal.toLocaleString('pl-PL')} zł</div></div>`:''}
+      <div class="res-line"><div class="rl-label">Śr. cena / noc</div><div class="rl-val">${Math.round(grandTotal/cNights).toLocaleString('pl-PL')} zł</div></div>
+      <div class="res-line"><div class="rl-label">Osoby</div><div class="rl-val">${cAdults} dor.${cChildren?` + ${cChildren} dz.`:''}</div></div>
     </div>`;
 }
 
-// ── CHILDREN SECTION ──
+// ─── CHILDREN SECTION ───
 function buildChildGrid(){
-  const base=childRoomType===0?110:120;
-  document.getElementById('child-grid').innerHTML=OFFERS.map(o=>{
+  const base=childRoomType===0?CHILD_STD:CHILD_GRAND;
+  // Tiers: 1 noc, 2-3 noce, 4-5 nocy, 6-7 nocy
+  document.getElementById('child-grid').innerHTML=OFFERS.map((o,oi)=>{
     const rows=[
-      ['Noc tygodniowa (1–2 noce)', base-o.globalDiscC-o.weekdayDiscC],
-      ['Noc weekendowa (1–2 noce)', base-o.globalDiscC],
-      ['Noc tygodniowa (3–5 nocy)', base-o.globalDiscC-o.weekdayDiscC-10],
-      ['Noc weekendowa (3–5 nocy)', base-o.globalDiscC-10],
-      ['Noc tygodniowa (6–7 nocy)', base-o.globalDiscC-o.weekdayDiscC-20],
-      ['Noc weekendowa (6–7 nocy)', base-o.globalDiscC-20],
+      ['1 noc — tygodniowa',       base - o.globalDiscC - o.weekdayDiscC - los(1,oi)],
+      ['1 noc — weekendowa',        base - o.globalDiscC - los(1,oi)],
+      ['2–3 noce — tygodniowa',     base - o.globalDiscC - o.weekdayDiscC - los(2,oi)],
+      ['2–3 noce — weekendowa',     base - o.globalDiscC - los(2,oi)],
+      ['4–5 nocy — tygodniowa',     base - o.globalDiscC - o.weekdayDiscC - los(4,oi)],
+      ['4–5 nocy — weekendowa',     base - o.globalDiscC - los(4,oi)],
+      ['6–7 nocy — tygodniowa',     base - o.globalDiscC - o.weekdayDiscC - los(6,oi)],
+      ['6–7 nocy — weekendowa',     base - o.globalDiscC - los(6,oi)],
     ];
     return`<div class="child-card">
       <div class="child-card-head" style="background:${o.color}">${o.name}</div>
       <div class="child-rows">
         ${rows.map(([l,v])=>`<div class="child-row"><span class="cr-label">${l}</span><span class="cr-val">${Math.max(0,v)} zł</span></div>`).join('')}
-      </div>
-    </div>`;
+      </div></div>`;
   }).join('');
 }
 function setChildRoom(i,btn){
@@ -561,7 +531,7 @@ function setChildRoom(i,btn){
   buildChildGrid();
 }
 
-// ── MATRIX ──
+// ─── MATRIX ───
 function buildRoomSel(){
   const rs=document.getElementById('rsel');
   ROOMS.forEach((r,i)=>{const o=document.createElement('option');o.value=i;o.text=r.name;rs.appendChild(o);});
@@ -581,27 +551,38 @@ function buildOccSel(){
   os.addEventListener('change',buildMatrix);
   buildMatrix();
 }
-const TIER_LABELS={
-  3:'▸ Min. 3 noce — dodatkowe −10 zł / os. / noc (wszystkie doby)',
-  6:'▸ Min. 6 nocy — dodatkowe −10 zł / os. / noc łącznie (−20 zł / os. / noc)',
-};
+
 function buildMatrix(){
   const ri=+document.getElementById('rsel').value;
   const persons=+document.getElementById('osel').value;
   const base=ROOMS[ri].prices[persons];
   const offer=OFFERS[activeOffer];
-  document.querySelector('#mtbl thead').innerHTML=`<tr><th style="text-align:left">Noce</th><th>0 weekendowych</th><th>1 weekendowa</th><th>2 weekendowe</th></tr>`;
-  let rows='',all=[];
+  const oi=activeOffer;
+  const mn=offer.minNights;
+
+  // Dynamic tier labels
+  const TIERS={};
+  if(oi!==0) TIERS[2]='▸ 2–3 noce — dodatkowe −5 zł / os. / noc (wszystkie doby)';
+  TIERS[4]='▸ Min. 4 noce — dodatkowe −10 zł / os. / noc (wszystkie doby)';
+  TIERS[6]='▸ Min. 6 nocy — łącznie −20 zł / os. / noc (wszystkie doby)';
+
+  document.querySelector('#mtbl thead').innerHTML=`<tr>
+    <th style="text-align:left">Noce</th>
+    <th>0 weekendowych</th><th>1 weekendowa</th><th>2 weekendowe</th></tr>`;
+
+  let rows='', all=[];
   for(let n=1;n<=7;n++){
-    if(TIER_LABELS[n]) rows+=`<tr class="tier-row"><td colspan="4">${TIER_LABELS[n]}</td></tr>`;
+    if(TIERS[n]) rows+=`<tr class="tier-row"><td colspan="4">${TIERS[n]}</td></tr>`;
     const nl=n===1?'noc':n<5?'noce':'nocy';
-    rows+=`<tr><td>${n} ${nl}</td>`;
+    const dimmed=n<mn;
+    rows+=`<tr${dimmed?' class="dimmed"':''}><td>${n} ${nl}${dimmed?` <span style="font-size:.65rem;color:var(--gold)">min. ${mn}</span>`:''}`;
+    rows+='</td>';
     for(let w=0;w<=2;w++){
       if(!isValid(n,w)){rows+=`<td class="na-cell">—</td>`;continue;}
-      const ld=los(n),wdf=(n-w)/n;
-      const avg=base-persons*(offer.globalDisc+ld)-persons*offer.weekdayDisc*wdf;
+      const ld=los(n,oi), wdf=(n-w)/n;
+      const avg=base - persons*(offer.globalDisc+ld) - persons*offer.weekdayDisc*wdf;
       const pct=Math.round((avg-base)/base*1000)/10;
-      all.push(pct);
+      if(!dimmed) all.push(pct);
       const bg=pct<-0.05?`rgba(45,110,62,${(0.06+Math.min(Math.abs(pct)/25,1)*0.42).toFixed(2)})`:'transparent';
       const tc=pct<-0.05?'#1e5229':'#1c1c1c', sign=pct>0?'+':'';
       rows+=`<td style="background:${bg}"><div class="cell-pct" style="color:${tc}">${sign}${pct}%</div><div class="cell-sub">${Math.round(avg)} zł</div></td>`;
@@ -609,22 +590,30 @@ function buildMatrix(){
     rows+='</tr>';
   }
   document.querySelector('#mtbl tbody').innerHTML=rows;
-  const mn=Math.min(...all),mx=Math.max(...all);
-  const mnP=Math.round(base*(1+mn/100)),mxP=Math.round(base*(1+mx/100));
-  document.getElementById('smry').innerHTML=`
-    <div class="sc"><div class="l">Cena bazowa</div><div class="v base">${base} zł</div></div>
-    <div class="sc"><div class="l">Maks. zniżka</div><div class="v good">${Math.abs(mn)}% → ${mnP} zł</div></div>
-    <div class="sc"><div class="l">Min. zniżka</div><div class="v" style="color:#5a5a5a">${Math.abs(mx)}% → ${mxP} zł</div></div>
-    <div class="sc"><div class="l">Rozpiętość</div><div class="v">${mxP-mnP} zł / noc</div></div>`;
+
+  const note=document.getElementById('mat-note');
+  if(mn>1){note.textContent=`Oferta Standardowa: minimalny pobyt ${mn} noce. Wiersze N<${mn} pokazane poglądowo.`;note.style.display='block';}
+  else note.style.display='none';
+
+  if(all.length){
+    const mn2=Math.min(...all),mx=Math.max(...all);
+    const mnP=Math.round(base*(1+mn2/100)),mxP=Math.round(base*(1+mx/100));
+    document.getElementById('smry').innerHTML=`
+      <div class="sc"><div class="l">Cena bazowa</div><div class="v base">${base} zł</div></div>
+      <div class="sc"><div class="l">Maks. zniżka</div><div class="v good">${Math.abs(mn2)}% → ${mnP} zł</div></div>
+      <div class="sc"><div class="l">Min. zniżka</div><div class="v" style="color:#5a5a5a">${Math.abs(mx)}% → ${mxP} zł</div></div>
+      <div class="sc"><div class="l">Rozpiętość</div><div class="v">${mxP-mnP} zł / noc</div></div>`;
+  }
 }
 
 function selectOffer(i){
   activeOffer=i;
   document.querySelectorAll('.offer-tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  if(cNights<minNights()) cNights=minNights();
   buildRules(); buildChildGrid(); buildMatrix(); updateCalc();
 }
 
-// ── INIT ──
+// ─── INIT ───
 buildOfferTabs();
 initCalcRoom();
 cAdults=minA(cRoom);
