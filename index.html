@@ -9,619 +9,539 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --brown:#2d1b0e;--gold:#b8943f;--gold-light:#f5edda;
+  --brown:#2d1b0e;
+  --primary:#4f3728;
   --green:#2d6e3e;--green-bg:rgba(45,110,62,.09);
   --text:#1c1c1c;--soft:#5a5a5a;--muted:#9a9a9a;
-  --border:#e2ddd6;--bg:#f8f6f2;--white:#ffffff;
+  --border:#e2ddd6;--bg:#f8f6f2;--white:#fff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+
 header{background:var(--brown);padding:3rem 2rem 2.5rem;text-align:center}
 header h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,4.5vw,2.8rem);color:#fff;letter-spacing:.04em}
-header h1 span{color:var(--gold);font-style:italic}
+header h1 span{color:#fff;font-style:italic}
 header p{color:rgba(255,255,255,.5);font-size:.75rem;margin-top:.7rem;letter-spacing:.12em;text-transform:uppercase}
-.gold-line{width:40px;height:2px;background:var(--gold);margin:1.2rem auto .8rem}
-main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+.deco-line{width:40px;height:2px;background:var(--primary);margin:1.2rem auto .8rem}
+
+main{max-width:980px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
 section{margin-bottom:3.5rem}
 .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--brown);border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:1.4rem;letter-spacing:.02em}
 
-/* OFFER TABS */
-.offer-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-.offer-tab{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:1.1rem 1.3rem;cursor:pointer;position:relative;transition:border-color .18s,box-shadow .18s;user-select:none}
-.offer-tab:hover{box-shadow:0 2px 10px rgba(0,0,0,.07)}
-.offer-tab.active{border-color:var(--tab-color);box-shadow:0 0 0 3px rgba(0,0,0,.04),0 2px 12px rgba(0,0,0,.1)}
-.tab-now{position:absolute;top:.7rem;right:.8rem;font-size:.6rem;text-transform:uppercase;letter-spacing:.07em;font-weight:600;color:#fff;padding:.2rem .55rem;border-radius:20px;background:var(--tab-color)}
-.tab-dot{width:10px;height:10px;border-radius:50%;background:var(--tab-color);display:inline-block;margin-right:.4rem;vertical-align:middle}
-.tab-name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.25rem}
-.tab-period{font-size:.75rem;color:var(--soft);line-height:1.5}
+/* SEASON TABS */
+.stabs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:560px){.stabs{grid-template-columns:1fr}}
+.stab{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:.85rem 1.1rem;cursor:pointer;transition:border-color .18s,box-shadow .18s;user-select:none}
+.stab:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stab.active{border:2px solid var(--tc);box-shadow:none}
+.stab-now{display:inline-block;font-size:.58rem;text-transform:uppercase;letter-spacing:.07em;font-weight:600;padding:.15rem .55rem;border-radius:20px;margin-bottom:.45rem;color:var(--tc);border:1px solid var(--tc)}
+.stab-dot{width:8px;height:8px;border-radius:50%;background:var(--tc);display:inline-block;margin-right:.4rem;vertical-align:middle}
+.stab-name{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
+.stab-period{font-size:.72rem;color:var(--soft)}
+.stab-mod{font-size:.7rem;margin-top:.25rem;font-weight:500}
+.pos{color:#a32d2d}.neg{color:var(--green)}.neu{color:var(--muted)}
 
 /* CALCULATOR */
-.calc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.5rem 1.8rem;display:flex;flex-direction:column;gap:1.4rem}
-.calc-row{display:grid;gap:1rem}
-.r1{grid-template-columns:1fr}
-.r2{grid-template-columns:repeat(3,1fr)}
-.r3{grid-template-columns:1fr 1fr}
-@media(max-width:600px){.r2,.r3{grid-template-columns:1fr}}
-.calc-field label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:block;margin-bottom:.4rem;font-weight:500}
-.calc-field select{width:100%}
+.calc-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;gap:1.3rem}
+.cg3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cg2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:580px){.cg3,.cg2{grid-template-columns:1fr}}
+.cf label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:block;margin-bottom:.35rem;font-weight:500}
+.cf select{width:100%}
+select{padding:.55rem .9rem;border:1px solid var(--border);border-radius:8px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text);background:var(--white);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a5a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2.2rem}
+select:focus{outline:none;border-color:var(--primary)}
 .stepper{display:flex;align-items:center;border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .stepper button{width:40px;height:40px;border:none;background:var(--bg);cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:background .15s}
-.stepper button:hover:not(:disabled){background:var(--gold-light)}
+.stepper button:hover:not(:disabled){background:#f5edda}
 .stepper button:disabled{opacity:.3;cursor:not-allowed}
-.sval{flex:1;text-align:center;font-size:.95rem;font-weight:500}
-.slabel{font-size:.68rem;color:var(--muted);text-align:center;padding:0 4px}
-.cap-note{font-size:.7rem;color:var(--muted);margin-top:.3rem;text-align:center}
-.min-note{font-size:.7rem;color:var(--gold);margin-top:.3rem;text-align:center;font-weight:500}
-.toggle-group{display:flex;gap:.4rem;flex-wrap:wrap}
-.tpill{padding:.45rem .9rem;border-radius:20px;border:1px solid var(--border);font-size:.82rem;cursor:pointer;background:var(--white);color:var(--soft);transition:all .15s;white-space:nowrap}
-.tpill:hover:not(:disabled){border-color:var(--brown);color:var(--text)}
-.tpill.active{background:var(--brown);color:#fff;border-color:var(--brown);font-weight:500}
-.tpill.meal-on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:500}
+.sv{flex:1;text-align:center;font-size:.95rem;font-weight:500}
+.sl{font-size:.65rem;color:var(--muted);text-align:center}
+.cap-note{font-size:.68rem;color:var(--muted);text-align:center;margin-top:.25rem}
+.min-note{font-size:.68rem;color:var(--primary);font-weight:500;text-align:center;margin-top:.25rem}
+.tpills{display:flex;gap:.35rem;flex-wrap:wrap}
+.tpill{padding:.42rem .85rem;border-radius:20px;border:1px solid var(--border);font-size:.8rem;cursor:pointer;background:var(--white);color:var(--soft);transition:all .15s;white-space:nowrap}
+.tpill:hover:not(:disabled){border-color:var(--primary);color:var(--text)}
+.tpill.on{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:500}
+.tpill.meal-on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:500;opacity:.85}
+.tpill.meal-on.extra{opacity:1}
 .tpill:disabled{opacity:.3;cursor:not-allowed}
 
 /* RESULT */
-.calc-result{background:var(--bg);border-radius:10px;padding:1.2rem 1.4rem}
-.res-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.res-total-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.3rem}
-.res-total-price{font-size:2rem;font-weight:600;color:var(--brown);line-height:1}
-.res-total-price small{font-size:.85rem;font-weight:400;color:var(--soft)}
-.res-saving .s-label{font-size:.7rem;color:var(--muted);margin-bottom:.2rem;text-align:right}
-.res-saving .s-val{font-size:1.1rem;font-weight:600;color:var(--green)}
-.res-saving .s-pct{font-size:.82rem;color:var(--green);text-align:right}
-.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem}
-.res-line .rl-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.res-line .rl-val{font-size:.9rem;font-weight:500;color:var(--text)}
-.res-line .rl-val.disc{color:var(--green)}
-.res-line .rl-val.meal{color:var(--gold)}
+.result{background:var(--bg);border-radius:10px;padding:1.2rem 1.4rem}
+.r-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;padding-bottom:1rem;margin-bottom:1rem;border-bottom:1px solid var(--border)}
+.r-total-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.3rem}
+.r-total{font-size:2rem;font-weight:600;color:var(--brown);line-height:1}
+.r-total small{font-size:.82rem;font-weight:400;color:var(--soft)}
+.r-save .sl2{font-size:.68rem;color:var(--muted);margin-bottom:.15rem;text-align:right}
+.r-save .sv2{font-size:1.05rem;font-weight:600;color:var(--green)}
+.r-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:.6rem;margin-bottom:.8rem}
+.rl .rll{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.1rem}
+.rl .rlv{font-size:.88rem;font-weight:500;color:var(--text)}
+.rl .rlv.disc{color:var(--green)}
+.rl .rlv.add{color:var(--primary)}
+.promo-box{border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.5rem}
+.promo-row{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem}
+.promo-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;margin-top:1px}
+.pi-disc{background:var(--green-bg);color:var(--green)}
+.pi-vouch{background:rgba(79,55,40,.1);color:var(--primary)}
+.promo-na{color:var(--muted);font-size:.8rem}
+.badge-disc{background:var(--green-bg);color:var(--green);font-size:.73rem;font-weight:600;padding:1px 7px;border-radius:12px}
+.badge-vouch{background:rgba(79,55,40,.1);color:var(--primary);font-size:.73rem;font-weight:600;padding:1px 7px;border-radius:12px}
 
-/* RULES */
-.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.9rem}
-.rule-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.9rem;align-items:flex-start}
-.rule-card.hl{border-color:var(--offer-color)}
-.rule-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
-.rule-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.2rem}
-.rule-val{font-size:.9rem;font-weight:500;color:var(--text);line-height:1.4}
-.rule-sub{font-size:.76rem;color:var(--soft);margin-top:.15rem}
-.rule-child{font-size:.76rem;color:#4a7c3f;font-weight:500;margin-top:.2rem}
+/* PRICE TABLE */
+.ptbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+.ptbl{width:100%;border-collapse:collapse;background:var(--white)}
+.ptbl thead tr{background:var(--brown)}
+.ptbl thead th{color:rgba(255,255,255,.75);font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:.7rem .9rem;text-align:center}
+.ptbl thead th:first-child{text-align:left;color:#fff}
+.ptbl tbody tr:nth-child(even){background:#faf9f7}
+.ptbl tbody td{padding:.7rem .9rem;font-size:.9rem;text-align:center;border-bottom:1px solid var(--border)}
+.ptbl tbody td:first-child{text-align:left;font-weight:600;font-size:.85rem}
+.ptbl tbody tr:last-child td{border-bottom:none}
+.big{font-weight:600;font-size:.95rem}
+.sub2{font-size:.72rem;color:var(--soft)}
 
-/* TABLES */
-.tbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;background:var(--white)}
-thead tr{background:var(--brown)}
-thead th{color:rgba(255,255,255,.75);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:.75rem 1rem;text-align:center}
-thead th:first-child{text-align:left;color:#fff}
-tbody tr:nth-child(even){background:#faf9f7}
-tbody tr:hover{background:var(--gold-light);transition:background .15s}
-tbody td{padding:.75rem 1rem;font-size:.9rem;text-align:center;border-bottom:1px solid var(--border)}
-tbody td:first-child{text-align:left;font-weight:500;font-size:.85rem}
-tbody tr:last-child td{border-bottom:none}
-.na{color:var(--muted);font-size:.8rem}
-.child-toggle{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
-.ctab{padding:.4rem 1rem;border-radius:20px;border:1px solid var(--border);font-size:.82rem;cursor:pointer;background:var(--white);color:var(--soft);transition:all .15s}
-.ctab.active{background:var(--brown);color:#fff;border-color:var(--brown)}
-.child-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-.child-card{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.child-card-head{padding:.6rem 1rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;color:#fff}
-.child-rows{padding:.5rem 1rem .8rem}
-.child-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:.5px solid var(--border);font-size:.85rem}
-.child-row:last-child{border-bottom:none}
-.cr-label{color:var(--soft)}
-.cr-val{font-weight:600}
-.child-free{text-align:center;padding:.8rem;font-size:.85rem;color:var(--green);font-weight:500;background:var(--green-bg);border-radius:6px;margin-top:.8rem}
-.child-adult{text-align:center;padding:.5rem;font-size:.78rem;color:var(--muted);margin-top:.5rem}
+/* INFO BOXES */
+.info-boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.2rem}
+.info-box{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem;display:flex;gap:.8rem;align-items:flex-start}
+.ib-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+.ib-label{font-size:.67rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.2rem}
+.ib-val{font-size:.88rem;font-weight:500;color:var(--text);line-height:1.4}
+.ib-sub{font-size:.73rem;color:var(--soft);margin-top:.15rem}
 
-/* MATRIX */
-.sel-row{display:flex;gap:1rem;margin-bottom:1.4rem;flex-wrap:wrap}
-.sel-group{display:flex;flex-direction:column;gap:.35rem;flex:1;min-width:180px}
-.sel-group label{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:500}
-select{padding:.55rem .9rem;border:1px solid var(--border);border-radius:6px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--text);background:var(--white);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a5a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2.2rem}
-select:focus{outline:none;border-color:var(--brown)}
-.mat-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
-#mtbl{width:100%;border-collapse:collapse;background:var(--white)}
-#mtbl thead tr{background:var(--brown)}
-#mtbl thead th{color:rgba(255,255,255,.75);font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;padding:.7rem .8rem;text-align:center}
-#mtbl thead th:first-child{text-align:left}
-#mtbl tbody td{padding:.7rem .8rem;text-align:center;border-bottom:1px solid var(--border);border-left:1px solid var(--border)}
-#mtbl tbody td:first-child{border-left:none;text-align:left;font-size:.85rem;font-weight:500}
-#mtbl tbody tr:last-child td{border-bottom:none}
-.tier-row td{background:#f0eee9 !important;font-size:.72rem;color:var(--soft);padding:.4rem .8rem !important;border-left:none !important;text-align:left !important}
-.dimmed td{opacity:.35}
-.cell-pct{font-size:.95rem;font-weight:600;font-variant-numeric:tabular-nums}
-.cell-sub{font-size:.75rem;color:var(--soft);margin-top:2px;font-variant-numeric:tabular-nums}
-.na-cell{color:var(--muted);font-size:.8rem}
-.smry{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:1.4rem}
-@media(max-width:640px){.smry{grid-template-columns:repeat(2,1fr)}}
-.sc{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem}
-.sc .l{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.3rem}
-.sc .v{font-size:1.1rem;font-weight:600}
-.sc .v.good{color:var(--green)}
-.sc .v.base{color:var(--brown)}
-.mat-note{font-size:.75rem;color:var(--muted);margin-top:.8rem;padding:.5rem .7rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:0 4px 4px 0}
+/* COMPARISON TABLE */
+.cmp-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+.cmp{width:100%;border-collapse:collapse;background:var(--white);font-size:.82rem}
+.cmp thead tr:first-child{background:var(--brown)}
+.cmp thead tr:first-child th{color:rgba(255,255,255,.75);font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;padding:.7rem .8rem;text-align:center}
+.cmp thead tr:first-child th:first-child{text-align:left;color:#fff}
+.cmp thead tr.sub-head th{font-size:.65rem;font-weight:500;color:var(--soft);padding:.35rem .8rem;text-align:center;border-bottom:1px solid var(--border);background:#f0ece6}
+.cmp thead tr.sub-head th:first-child{text-align:left}
+.cmp tbody tr{border-top:1px solid var(--border)}
+.cmp tbody tr:nth-child(even){background:#faf9f7}
+.cmp tbody td{padding:.7rem .8rem;text-align:center;vertical-align:top}
+.cmp tbody td:first-child{text-align:left;font-weight:600;font-size:.83rem;vertical-align:middle}
+.pn{font-weight:600;font-size:.9rem;color:var(--text)}
+.ps{font-size:.7rem;color:var(--muted)}
+.pdiff{font-size:.75rem;font-weight:500;color:var(--green)}
+.pthresh{margin-top:5px;padding-top:5px;border-top:.5px solid var(--border)}
+.pthresh-n{font-size:.68rem;color:var(--soft)}
+.pthresh-v{font-size:.78rem;font-weight:600;color:var(--green)}
+.pthresh-x{font-size:.7rem;color:var(--muted);font-style:italic}
+.cmp-note{font-size:.72rem;color:var(--soft);margin-top:.5rem}
+
 footer{text-align:center;padding:1.5rem;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border)}
 </style>
 </head>
 <body>
 <header>
-  <div class="gold-line"></div>
+  <div class="deco-line"></div>
   <h1>Cennik Pokoi — <span>Hotel Zacisze w Turawie</span></h1>
-  <p>Oferty Sezonowe · Zniżki dla Dzieci · Zniżki poza Weekendem · Zniżki dla Dłuższych Pobytów</p>
+  <p>Oferty Sezonowe · Zniżki Tygodniowe · Wyżywienie · Kalkulator Ceny Pobytu</p>
 </header>
 <main>
 
-<!-- OFFER TABS -->
 <section>
-  <h2 class="sec-title">Oferta sezonowa</h2>
-  <div class="offer-tabs" id="offer-tabs"></div>
+  <h2 class="sec-title">Wybierz sezon</h2>
+  <div class="stabs" id="stabs"></div>
 </section>
 
-<!-- CALCULATOR -->
 <section>
   <h2 class="sec-title">Kalkulator ceny pobytu</h2>
   <div class="calc-card">
-    <div class="calc-row r1">
-      <div class="calc-field">
-        <label>Kategoria pokoju</label>
-        <select id="calc-room"></select>
-      </div>
+    <div style="display:grid;grid-template-columns:1fr">
+      <div class="cf"><label>Kategoria pokoju</label><select id="cr"></select></div>
     </div>
-    <div class="calc-row r2">
-      <div class="calc-field">
+    <div class="cg3">
+      <div class="cf">
         <label>Liczba nocy</label>
         <div class="stepper">
-          <button id="bn-" onclick="changeNights(-1)">−</button>
-          <span class="sval" id="nights-val">3</span>
-          <button id="bn+" onclick="changeNights(1)">+</button>
+          <button id="bn-" onclick="chN(-1)">−</button>
+          <span class="sv" id="nv">3</span>
+          <button id="bn+" onclick="chN(1)">+</button>
         </div>
-        <div class="min-note" id="min-note"></div>
+        <div class="min-note" id="min-note" style="display:none"></div>
       </div>
-      <div class="calc-field">
+      <div class="cf">
         <label>Dorośli</label>
         <div class="stepper">
-          <button id="ba-" onclick="changeAdults(-1)">−</button>
+          <button id="ba-" onclick="chA(-1)">−</button>
           <div style="flex:1;text-align:center">
-            <div class="sval" id="adults-val">—</div>
-            <div class="slabel" id="adults-range"></div>
+            <div class="sv" id="av">—</div>
+            <div class="sl" id="ar"></div>
           </div>
-          <button id="ba+" onclick="changeAdults(1)">+</button>
+          <button id="ba+" onclick="chA(1)">+</button>
         </div>
       </div>
-      <div class="calc-field">
+      <div class="cf">
         <label>Dzieci 3–12 lat</label>
         <div class="stepper">
-          <button id="bc-" onclick="changeChildren(-1)">−</button>
+          <button id="bc-" onclick="chC(-1)">−</button>
           <div style="flex:1;text-align:center">
-            <div class="sval" id="children-val">0</div>
-            <div class="slabel" id="children-max"></div>
+            <div class="sv" id="cv">0</div>
+            <div class="sl" id="cm"></div>
           </div>
-          <button id="bc+" onclick="changeChildren(1)">+</button>
+          <button id="bc+" onclick="chC(1)">+</button>
         </div>
-        <div class="cap-note" id="cap-note"></div>
+        <div class="cap-note" id="capn"></div>
       </div>
     </div>
-    <div class="calc-row r3">
-      <div class="calc-field">
+    <div class="cg2">
+      <div class="cf">
         <label>Wyżywienie</label>
-        <div class="toggle-group" id="meal-toggle">
-          <button class="tpill meal-on" data-meal="0" onclick="setMeal(0)">Pobyt ze śniadaniem</button>
-          <button class="tpill" data-meal="1" onclick="setMeal(1)">Pobyt ze śniadaniem i obiadokolacją</button>
+        <div class="tpills" id="mtog">
+          <button class="tpill meal-on" data-m="0" onclick="setM(0)">Pobyt ze śniadaniem</button>
+          <button class="tpill" data-m="1" onclick="setM(1)">Pobyt ze śniadaniem i obiadokolacją</button>
         </div>
       </div>
-      <div class="calc-field">
+      <div class="cf">
         <label>Typ pobytu</label>
-        <div class="toggle-group" id="weekend-toggle">
-          <button class="tpill active" data-w="0" onclick="setWeekend(0)">Pobyt w tygodniu</button>
-          <button class="tpill" data-w="2" onclick="setWeekend(2)">Pobyt obejmuje weekend</button>
-          <button class="tpill" data-w="1" onclick="setWeekend(1)">Pobyt obejmuje 1 noc w weekend</button>
+        <div class="tpills" id="wtog">
+          <button class="tpill on" data-w="0" onclick="setW(0)">Pobyt w tygodniu</button>
+          <button class="tpill" data-w="2" onclick="setW(2)">Pobyt obejmuje weekend</button>
+          <button class="tpill" data-w="1" onclick="setW(1)">1 noc weekendowa</button>
         </div>
       </div>
     </div>
-    <div class="calc-result" id="calc-result"></div>
+    <div class="result" id="res"></div>
   </div>
 </section>
 
-<!-- RULES -->
 <section>
-  <h2 class="sec-title">Reguły aktywnej oferty</h2>
-  <div class="rules" id="rules-container"></div>
-</section>
-
-<!-- ADULT PRICE TABLE -->
-<section>
-  <h2 class="sec-title">Cennik podstawowy — dorośli &amp; dzieci powyżej 12 lat (PLN / noc)</h2>
-  <div class="tbl-wrap">
-    <table id="ptbl">
+  <h2 class="sec-title">Cennik pokoi — <span id="ptbl-sname" style="font-style:italic"></span></h2>
+  <div class="ptbl-wrap">
+    <table class="ptbl">
       <thead><tr>
-        <th>Kategoria pokoju</th>
-        <th>1 os.</th><th>2 os.</th><th>3 os.</th><th>4 os.</th><th>5 os.</th>
+        <th>Pokój</th><th>Cena bazowa</th><th>+Dorosły</th>
+        <th>+Dziecko<br><span style="font-weight:300;text-transform:none;font-size:.7em">3–12 lat</span></th>
+        <th>Max</th>
       </tr></thead>
-      <tbody></tbody>
+      <tbody id="ptbl-body"></tbody>
     </table>
   </div>
+  <div class="info-boxes">
+    <div class="info-box">
+      <div class="ib-icon" style="background:rgba(79,55,40,.1);color:var(--primary)">◈</div>
+      <div>
+        <div class="ib-label">Zniżka tygodniowa — Nd do Pt rano</div>
+        <div class="ib-val">−15 zł od osoby dorosłej / noc</div>
+        <div class="ib-sub">−10 zł od dziecka 3–12 lat / noc</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="ib-icon" style="background:rgba(79,55,40,.1);color:var(--primary)">☕</div>
+      <div>
+        <div class="ib-label">Opcja: obiadokolacja</div>
+        <div class="ib-val">+80 zł dorosły / +50 zł dziecko za noc</div>
+        <div class="ib-sub">Śniadanie zawsze wliczone</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="ib-icon" style="background:var(--green-bg);color:var(--green)">✓</div>
+      <div>
+        <div class="ib-label">Dzieci poniżej 3 lat</div>
+        <div class="ib-val">Nocleg bezpłatny</div>
+        <div class="ib-sub">Dzieci powyżej 12 lat — cena dorosłego</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CHILDREN PRICING -->
 <section>
-  <h2 class="sec-title">Cennik dla dzieci (3–12 lat) — cena za noc</h2>
-  <div class="child-toggle">
-    <button class="ctab active" onclick="setChildRoom(0,this)">Pokoje standard (120 zł bazowo)</button>
-    <button class="ctab" onclick="setChildRoom(1,this)">Apartament Grand Lux+ (130 zł bazowo)</button>
+  <h2 class="sec-title">Porównanie cen i progi zniżki 5%</h2>
+  <div class="cmp-wrap">
+    <table class="cmp" id="cmptbl"></table>
   </div>
-  <div class="child-grid" id="child-grid"></div>
-  <div class="child-free">Dzieci poniżej 3 lat — nocleg zawsze bezpłatny</div>
-  <div class="child-adult">Dzieci powyżej 12 lat — cena dorosłego · zniżki jak dla dorosłych</div>
-</section>
-
-<!-- DISCOUNT MATRIX -->
-<section>
-  <h2 class="sec-title">Macierz zniżek — dorośli · skuteczna cena i % od bazy</h2>
-  <div class="sel-row">
-    <div class="sel-group"><label>Kategoria pokoju</label><select id="rsel"></select></div>
-    <div class="sel-group"><label>Liczba osób</label><select id="osel"></select></div>
+  <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:1.2rem">
+    <div class="cmp-note">Cena <strong>min</strong> = min. dorośli, noc tygodniowa (ze zniżką −15 zł/os.)</div>
+    <div class="cmp-note">Cena <strong>maks</strong> = maks. dorośli, noc weekendowa (bez zniżki tygodniowej)</div>
+    <div class="cmp-note" style="color:var(--green)">Wartości % na zielono = różnica względem Sezonu Letniego</div>
+    <div class="cmp-note">Progi zniżki 5%: maks. obłożenie · 2 noce weekendowe (8n→3 wknd, 9n→4 wknd)</div>
+    <div class="cmp-note">Grand Lux nie jest dostępny w weekend — wyłączony z tabeli</div>
   </div>
-  <div class="mat-wrap"><table id="mtbl"><thead></thead><tbody></tbody></table></div>
-  <div id="mat-note" class="mat-note" style="display:none"></div>
-  <div class="smry" id="smry"></div>
 </section>
 
 </main>
-<footer>Hotel Zacisze w Turawie · Cennik Pokoi v6 · Trzy oferty sezonowe</footer>
+<footer>Hotel Zacisze w Turawie · Cennik Pokoi v10 · Trzy sezony · Zniżki i vouchery</footer>
 
 <script>
-// ─── ROOMS — ceny podniesione o 10 zł × liczba osób ───
-const ROOMS = [
-  {name:'Classic',              prices:{1:330, 2:500}},
-  {name:'Twin Classic+',        prices:{2:500, 3:670}},
-  {name:'Classic Eco',          prices:{1:310, 2:470}},
-  {name:'Double Lux',           prices:{1:370, 2:540}},
-  {name:'Twin Lux+',            prices:{2:550, 3:720, 4:890}},
-  {name:'Apartament Grand Lux+',prices:{3:850, 4:1030, 5:1210}},
+var ROOMS=[
+  {name:'Classic',     minA:1,maxT:3,base:310,aRate:150,cRate:105},
+  {name:'Classic Eco', minA:1,maxT:2,base:290,aRate:140,cRate:100},
+  {name:'Lux Double',  minA:1,maxT:2,base:350,aRate:150,cRate:105},
+  {name:'Lux Twin',    minA:2,maxT:4,base:520,aRate:150,cRate:105},
+  {name:'Grand Lux',   minA:3,maxT:5,base:790,aRate:160,cRate:110},
 ];
+var ROOMS_CMP=[0,1,2,3]; // indices for comparison table (no Grand Lux)
 
-// Ceny dzieci: standard 120 zł (+10), Grand Lux+ 130 zł (+10)
-const CHILD_STD = 120, CHILD_GRAND = 130;
-const DINNER_ADULT = 80, DINNER_CHILD = 50;
+var SEASONS=[
+  {name:'Oferta Standardowa',period:'Kwiecień–19 cze · 11 wrz–10 lis',
+   color:'#4f3728',tint:'rgba(79,55,40,.06)',aMod:0,cMod:0,minN:1,
+   modLabel:'Ceny bazowe',modCls:'neu',discT:3200,discPct:5,vouchT:1000},
+  {name:'Sezon Letni',period:'20 czerwca – 10 września',
+   color:'#b05a18',tint:'rgba(176,90,24,.06)',aMod:20,cMod:15,minN:2,
+   modLabel:'+20 zł/os. · +15 zł/dz.',modCls:'pos',discT:3600,discPct:5,vouchT:1800},
+  {name:'Sezon Zimowy',period:'11 listopada – 31 marca',
+   color:'#3a5f7a',tint:'rgba(58,95,122,.06)',aMod:-30,cMod:-20,minN:1,
+   modLabel:'−30 zł/os. · −20 zł/dz.',modCls:'neg',discT:2600,discPct:5,vouchT:900},
+];
+var DINNER_A=80,DINNER_C=50,WD_A=15,WD_C=10;
 
-// ─── LOS discount — offer-aware ───
-// oi: 0=Standardowa, 1=Sezonowa, 2=Zimowa
-// Nowa reguła: progowe 4 noce (było 3); dla oi≠0 dodatkowe −5 zł za 2–3 noce
-function los(n, oi) {
-  if (n >= 6) return 20;
-  if (n >= 4) return 10;
-  if (n >= 2 && oi !== 0) return 5;   // tylko Sezonowa i Zimowa
-  return 0;
+var now=new Date(),NM=now.getMonth()+1,ND=now.getDate();
+var activeSeason=0;
+function isNowS(i){
+  if(i===1) return(NM===6&&ND>=20)||NM===7||NM===8||(NM===9&&ND<=10);
+  if(i===2) return(NM===11&&ND>=11)||NM===12||NM===1||NM===2||NM===3;
+  return!isNowS(1)&&!isNowS(2);
 }
+for(var i=0;i<3;i++){if(isNowS(i)){activeSeason=i;break;}}
 
-// ─── OFFERS ───
-const OFFERS = [
-  {
-    name:'Oferta Standardowa', period:'20 czerwca – 10 września', color:'#b8943f',
-    minNights:2,
-    weekdayDisc:15, weekdayDiscC:10, globalDisc:0, globalDiscC:0,
-    rules:[
-      {icon:'☀',hl:false,label:'Sezon letni · min. pobyt 2 noce',val:'20 czerwca – 10 września',sub:'Dziedziczone z cennika podstawowego'},
-      {icon:'◈',hl:true, label:'Noc tygodniowa — Nd do Pt rano',val:'−15 zł od osoby dorosłej / noc',child:'−10 zł dla dzieci 3–12 lat / noc'},
-      {icon:'⬡',hl:false,label:'Noc weekendowa (Pt–Sb, Sb–Nd)',val:'Cena bazowa — brak zniżki',sub:'Piątkowe i sobotnie noce bez zniżki'},
-      {icon:'✦',hl:false,label:'Min. 4 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
-      {icon:'✦',hl:false,label:'Min. 6 nocy — wszystkie doby',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
-    ],
-    isNow(m,d){return(m===6&&d>=20)||m===7||m===8||(m===9&&d<=10)}
-  },
-  {
-    name:'Zniżka Sezonowa', period:'1 kwietnia – 19 czerwca · 11 września – 10 listopada', color:'#4a7c3f',
-    minNights:1,
-    weekdayDisc:15, weekdayDiscC:10, globalDisc:20, globalDiscC:15,
-    rules:[
-      {icon:'🍂',hl:false,label:'Sezon przejściowy',val:'1 kwi – 19 cze · 11 wrz – 10 lis',sub:'Oferta Standardowa + zniżka sezonowa'},
-      {icon:'◈',hl:true, label:'Zniżka sezonowa — wszystkie doby',val:'−20 zł od osoby dorosłej / noc',child:'−15 zł dla dzieci 3–12 lat / noc'},
-      {icon:'◈',hl:true, label:'Noc tygodniowa — Nd do Pt rano',val:'Dodatkowo −15 zł od osoby dorosłej / noc',child:'Dodatkowo −10 zł dla dzieci 3–12 lat',sub:'Łącznie −35 zł dla dorosłych za noc tygodniową'},
-      {icon:'⬡',hl:false,label:'Noc weekendowa',val:'−20 zł od osoby dorosłej / noc',child:'−15 zł dla dzieci 3–12 lat',sub:'Tylko zniżka sezonowa'},
-      {icon:'✦',hl:true, label:'2–3 noce — wszystkie doby',val:'−5 zł od osoby / noc',child:'−5 zł dla dzieci 3–12 lat / noc',sub:'Dodatkowa zniżka poza sezonem letnim'},
-      {icon:'✦',hl:false,label:'Min. 4 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
-      {icon:'✦',hl:false,label:'Min. 6 nocy — wszystkie doby',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
-    ],
-    isNow(m,d){return m===4||m===5||(m===6&&d<20)||(m===9&&d>=11)||m===10||(m===11&&d<=10)}
-  },
-  {
-    name:'Oferta Zimowa', period:'11 listopada – 31 marca', color:'#3a5f7a',
-    minNights:1,
-    weekdayDisc:15, weekdayDiscC:10, globalDisc:50, globalDiscC:35,
-    rules:[
-      {icon:'❄',hl:false,label:'Sezon zimowy',val:'11 listopada – 31 marca',sub:'Oferta Standardowa + zniżka zimowa'},
-      {icon:'◈',hl:true, label:'Zniżka zimowa — wszystkie doby',val:'−50 zł od osoby dorosłej / noc',child:'−35 zł dla dzieci 3–12 lat / noc'},
-      {icon:'◈',hl:true, label:'Noc tygodniowa — Nd do Pt rano',val:'Dodatkowo −15 zł od osoby dorosłej / noc',child:'Dodatkowo −10 zł dla dzieci 3–12 lat',sub:'Łącznie −65 zł dla dorosłych za noc tygodniową'},
-      {icon:'⬡',hl:false,label:'Noc weekendowa',val:'−50 zł od osoby dorosłej / noc',child:'−35 zł dla dzieci 3–12 lat',sub:'Tylko zniżka zimowa'},
-      {icon:'✦',hl:true, label:'2–3 noce — wszystkie doby',val:'−5 zł od osoby / noc',child:'−5 zł dla dzieci 3–12 lat / noc',sub:'Dodatkowa zniżka poza sezonem letnim'},
-      {icon:'✦',hl:false,label:'Min. 4 noce — wszystkie doby',val:'−10 zł od osoby / noc',sub:'Dotyczy dorosłych i dzieci 3–12 lat'},
-      {icon:'✦',hl:false,label:'Min. 6 nocy — wszystkie doby',val:'Dodatkowo −10 zł od osoby / noc',sub:'Łącznie −20 zł od osoby / noc'},
-    ],
-    isNow(m,d){return(m===11&&d>=11)||m===12||m===1||m===2||m===3}
-  }
-];
-
-// ─── STATE ───
-const now=new Date(), NM=now.getMonth()+1, ND=now.getDate();
-let activeOffer=0;
-OFFERS.forEach((o,i)=>{if(o.isNow(NM,ND)) activeOffer=i;});
-let childRoomType=0;
-let cRoom=0, cNights=3, cAdults=1, cChildren=0, cMeal=0, cWeekend=0;
-
-// ─── HELPERS ───
+var cRoom=0,cNights=3,cAdults=ROOMS[0].minA,cChildren=0,cMeal=0,cWeekend=0;
+function sn(){return SEASONS[activeSeason];}
+function rm(){return ROOMS[cRoom];}
+function sBase(r,s){return r.base+r.minA*s.aMod;}
+function sAR(r,s){return r.aRate+s.aMod;}
+function sCR(r,s){return r.cRate+s.cMod;}
+function rPN(r,a,c,s){return sBase(r,s)+(a-r.minA)*sAR(r,s)+c*sCR(r,s);}
+function wdD(a,c){return a*WD_A+c*WD_C;}
+function maxC(){return rm().maxT-cAdults;}
+function aKeys(ri){var r=ROOMS[ri],k=[];for(var a=r.minA;a<=r.maxT;a++)k.push(a);return k;}
 function isValid(n,w){
-  if(w>2||w>n) return false;
-  if(n===6&&w===0) return false;
-  if(n===7&&w!==2) return false;
-  return true;
-}
-function roomKeys(ri){return Object.keys(ROOMS[ri].prices).map(Number).sort((a,b)=>a-b);}
-function minA(ri){return roomKeys(ri)[0];}
-function maxA(ri){return roomKeys(ri)[roomKeys(ri).length-1];}
-function maxC(ri,a){return maxA(ri)-a;}
-function childBase(ri){return ri===5?CHILD_GRAND:CHILD_STD;}
-function minNights(){return OFFERS[activeOffer].minNights;}
+  if(w>2||w>n)return false;
+  if(n===6&&w===0)return false;
+  if(n===7&&w!==2)return false;
+  return true;}
+function minNights(){return sn().minN;}
 
-// ─── OFFER TABS ───
-function buildOfferTabs(){
-  document.getElementById('offer-tabs').innerHTML=OFFERS.map((o,i)=>`
-    <div class="offer-tab${i===activeOffer?' active':''}" style="--tab-color:${o.color}" onclick="selectOffer(${i})">
-      ${o.isNow(NM,ND)?`<div class="tab-now">Teraz aktywna</div>`:''}
-      <div style="margin-bottom:.35rem"><span class="tab-dot" style="background:${o.color}"></span>
-        <span class="tab-name">${o.name}</span></div>
-      <div class="tab-period">${o.period}</div>
-    </div>`).join('');
-}
-
-// ─── RULES ───
-function buildRules(){
-  const o=OFFERS[activeOffer];
-  document.getElementById('rules-container').innerHTML=o.rules.map(r=>`
-    <div class="rule-card${r.hl?' hl':''}"${r.hl?` style="--offer-color:${o.color};border-color:${o.color}"`:''}>
-      <div class="rule-icon" style="background:${r.hl?o.color+'22':r.icon==='✦'?'rgba(45,110,62,.09)':'rgba(184,148,63,.15)'};color:${r.hl?o.color:r.icon==='✦'?'#2d6e3e':'#b8943f'}">${r.icon}</div>
-      <div><div class="rule-label">${r.label}</div>
-        <div class="rule-val">${r.val}</div>
-        ${r.child?`<div class="rule-child">${r.child}</div>`:''}
-        ${r.sub?`<div class="rule-sub">${r.sub}</div>`:''}
-      </div></div>`).join('');
+/* ── TABS ── */
+function buildTabs(){
+  var h='';
+  for(var i=0;i<SEASONS.length;i++){
+    var s=SEASONS[i],isnow=isNowS(i),act=activeSeason===i;
+    var border=act?('border:2px solid '+s.color+';background:'+s.tint):('border:1.5px solid var(--border)');
+    h+='<div class="stab'+(act?' active':'')+'" style="--tc:'+s.color+';'+border+'" onclick="selS('+i+')">'
+     +(isnow?'<div class="stab-now">Teraz aktywna</div>':'')
+     +'<div><span class="stab-dot" style="background:'+s.color+'"></span><span class="stab-name">'+s.name+'</span></div>'
+     +'<div class="stab-period">'+s.period+'</div>'
+     +'<div class="stab-mod '+s.modCls+'">'+s.modLabel+'</div>'
+     +'</div>';
+  }
+  document.getElementById('stabs').innerHTML=h;
+  document.querySelectorAll('.stab').forEach(function(b){
+    b.addEventListener('click',function(){selS(+this.style.getPropertyValue('--tc').indexOf(SEASONS[0].color)>=0?0:this.style.getPropertyValue('--tc').indexOf(SEASONS[1].color)>=0?1:2);});
+  });
 }
 
-// ─── PRICE TABLE ───
+/* ── PRICE TABLE ── */
 function buildPriceTable(){
-  document.querySelector('#ptbl tbody').innerHTML=ROOMS.map(r=>`
-    <tr><td>${r.name}</td>
-    ${[1,2,3,4,5].map(p=>r.prices[p]?`<td>${r.prices[p]} zł</td>`:`<td class="na">—</td>`).join('')}
-    </tr>`).join('');
+  var s=sn();
+  document.getElementById('ptbl-sname').textContent=s.name;
+  document.getElementById('ptbl-sname').style.color=s.color;
+  var h='';
+  ROOMS.forEach(function(r){
+    var b=sBase(r,s),ar=sAR(r,s),cr=sCR(r,s);
+    var ml=r.minA===1?'1 os.':r.minA===2?'2 os.':'3 os.';
+    h+='<tr><td>'+r.name+'</td>'
+     +'<td><div class="big">'+b+' zł</div><div class="sub2">min. '+ml+'</div></td>'
+     +'<td><div class="big">'+ar+' zł</div></td>'
+     +'<td><div class="big">'+cr+' zł</div></td>'
+     +'<td><div class="big">'+r.maxT+' os.</div></td></tr>';
+  });
+  document.getElementById('ptbl-body').innerHTML=h;
 }
 
-// ─── CALCULATOR ───
-function initCalcRoom(){
-  const sel=document.getElementById('calc-room');
-  ROOMS.forEach((r,i)=>{const o=document.createElement('option');o.value=i;o.text=r.name;sel.appendChild(o);});
-  sel.addEventListener('change',()=>{
+/* ── CALCULATOR ── */
+function initRoomSel(){
+  var sel=document.getElementById('cr');
+  ROOMS.forEach(function(r,i){var o=document.createElement('option');o.value=i;o.text=r.name;sel.appendChild(o);});
+  sel.addEventListener('change',function(){
     cRoom=+sel.value;
-    const keys=roomKeys(cRoom);
-    if(!keys.includes(cAdults)) cAdults=cAdults<keys[0]?keys[0]:keys[keys.length-1];
-    cChildren=Math.min(cChildren,maxC(cRoom,cAdults));
+    var keys=aKeys(cRoom);
+    if(keys.indexOf(cAdults)<0)cAdults=ROOMS[cRoom].minA;
+    cChildren=Math.min(cChildren,maxC());
     updateCalc();
   });
 }
 
-function changeNights(d){
-  cNights=Math.max(minNights(),Math.min(7,cNights+d));
+function chN(d){cNights=Math.max(minNights(),Math.min(7,cNights+d));
   if(!isValid(cNights,cWeekend)){
-    if(cNights===7) cWeekend=2;
-    else if(cNights===6&&cWeekend===0) cWeekend=1;
-    else if(cNights===1&&cWeekend===2) cWeekend=1;
-  }
-  updateCalc();
-}
-function changeAdults(d){
-  const keys=roomKeys(cRoom);
-  const ni=Math.max(0,Math.min(keys.length-1,keys.indexOf(cAdults)+d));
-  cAdults=keys[ni];
-  cChildren=Math.min(cChildren,maxC(cRoom,cAdults));
-  updateCalc();
-}
-function changeChildren(d){cChildren=Math.max(0,Math.min(maxC(cRoom,cAdults),cChildren+d));updateCalc();}
-function setMeal(v){cMeal=v;updateCalc();}
-function setWeekend(v){if(isValid(cNights,v)){cWeekend=v;updateCalc();}}
+    if(cNights===7)cWeekend=2;
+    else if(cNights===6&&cWeekend===0)cWeekend=1;
+    else if(cNights===1&&cWeekend===2)cWeekend=1;
+  }updateCalc();}
+function chA(d){var keys=aKeys(cRoom),ni=Math.max(0,Math.min(keys.length-1,keys.indexOf(cAdults)+d));
+  cAdults=keys[ni];cChildren=Math.min(cChildren,maxC());updateCalc();}
+function chC(d){cChildren=Math.max(0,Math.min(maxC(),cChildren+d));updateCalc();}
+function setM(v){cMeal=v;updateCalc();}
+function setW(v){if(isValid(cNights,v)){cWeekend=v;updateCalc();}}
 
 function updateCalc(){
-  const o=OFFERS[activeOffer];
-  const room=ROOMS[cRoom];
-  const keys=roomKeys(cRoom);
-  const aBase=room.prices[cAdults];
-  const cb=childBase(cRoom);
-  const ld=los(cNights,activeOffer);
-  const w=cWeekend, wdN=cNights-w;
-  const mn=minNights();
+  var s=sn(),r=rm(),keys=aKeys(cRoom),mn=minNights();
+  if(cNights<mn)cNights=mn;
+  var mc=maxC(),rpn=rPN(r,cAdults,cChildren,s);
+  var wd=wdD(cAdults,cChildren),wdN=cNights-cWeekend;
+  var roomTotal=cNights*rpn-wdN*wd;
+  var baseTotal=cNights*rpn;
+  var dinnerPN=cMeal===1?cAdults*DINNER_A+cChildren*DINNER_C:0;
+  var mealTotal=cNights*dinnerPN;
+  var preDisc=roomTotal+mealTotal;
+  var disc5=preDisc>=s.discT?Math.round(preDisc*0.05):0;
+  var finalTotal=preDisc-disc5;
+  var vouchVal=roomTotal>=s.vouchT?Math.round(roomTotal*0.10):0;
+  var saved=baseTotal-roomTotal;
+  var savedPct=baseTotal>0?Math.round(saved/baseTotal*100):0;
 
-  // Enforce min nights for active offer
-  if(cNights<mn) { cNights=mn; }
+  document.getElementById('nv').textContent=cNights;
+  document.getElementById('av').textContent=cAdults;
+  document.getElementById('ar').textContent='min '+r.minA+' · maks '+r.maxT;
+  document.getElementById('cv').textContent=cChildren;
+  document.getElementById('cm').textContent='maks. '+mc;
+  document.getElementById('capn').textContent='Łącznie '+(cAdults+cChildren)+' os. z maks. '+r.maxT;
+  var mn2=document.getElementById('min-note');
+  if(mn>1){mn2.textContent='Min. pobyt w tym sezonie: '+mn+' noce';mn2.style.display='block';}
+  else mn2.style.display='none';
 
-  // Displays
-  document.getElementById('nights-val').textContent=cNights;
-  document.getElementById('adults-val').textContent=cAdults;
-  document.getElementById('adults-range').textContent=`min ${minA(cRoom)} · maks ${maxA(cRoom)}`;
-  document.getElementById('children-val').textContent=cChildren;
-  document.getElementById('children-max').textContent=`maks. ${maxC(cRoom,cAdults)}`;
-  document.getElementById('cap-note').textContent=`Łącznie ${cAdults+cChildren} os. z maks. ${maxA(cRoom)}`;
-  const minN=document.getElementById('min-note');
-  if(mn>1){minN.textContent=`Minimalna długość pobytu: ${mn} noce`;minN.style.display='block';}
-  else minN.style.display='none';
-
-  // Button states
   document.getElementById('bn-').disabled=cNights<=mn;
   document.getElementById('bn+').disabled=cNights>=7;
   document.getElementById('ba-').disabled=keys.indexOf(cAdults)<=0;
   document.getElementById('ba+').disabled=keys.indexOf(cAdults)>=keys.length-1;
   document.getElementById('bc-').disabled=cChildren<=0;
-  document.getElementById('bc+').disabled=cChildren>=maxC(cRoom,cAdults);
+  document.getElementById('bc+').disabled=cChildren>=mc;
+  document.querySelectorAll('#mtog .tpill').forEach(function(b){b.className='tpill'+(+b.dataset.m===cMeal?' meal-on':'')+( +b.dataset.m===1?' extra':'');});
+  document.querySelectorAll('#wtog .tpill').forEach(function(b){
+    var wv=+b.dataset.w,v=isValid(cNights,wv);b.disabled=!v;b.className='tpill'+(wv===cWeekend&&v?' on':'');});
 
-  // Meal toggle
-  document.querySelectorAll('#meal-toggle .tpill').forEach(b=>{
-    b.className='tpill'+(+b.dataset.meal===cMeal?' meal-on':'');
-  });
+  var extraA=cAdults-r.minA,sB2=sBase(r,s),sAR2=sAR(r,s),sCR2=sCR(r,s);
+  var mods=s.aMod!==0?(' (sezon: '+(s.aMod>0?'+':'')+s.aMod+' zł/os.)'):'';
+  var wLabel=cWeekend===0?'Pobyt w tygodniu':cWeekend===1?'1 noc weekendowa':'Weekend (2 noce)';
+  var mLabel=cMeal===0?'Ze śniadaniem':'Ze śniadaniem i obiadokolacją';
 
-  // Weekend toggle
-  document.querySelectorAll('#weekend-toggle .tpill').forEach(b=>{
-    const wv=+b.dataset.w, valid=isValid(cNights,wv);
-    b.disabled=!valid;
-    b.className='tpill'+(wv===cWeekend&&valid?' active':'');
-  });
+  var promoH='';
+  if(disc5>0){
+    promoH+='<div class="promo-row"><div class="promo-icon pi-disc">✦</div>'
+     +'<div><span class="badge-disc">Zniżka 5%</span> od wartości rezerwacji<br>'
+     +'<span style="font-weight:600;color:var(--green)">−'+disc5.toLocaleString('pl-PL')+' zł</span>'
+     +' (próg '+s.discT.toLocaleString('pl-PL')+' zł)</div></div>';
+  }else{
+    promoH+='<div class="promo-na">Zniżka 5% od '+s.discT.toLocaleString('pl-PL')+' zł — brakuje '+(s.discT-preDisc).toLocaleString('pl-PL')+' zł do progu</div>';
+  }
+  if(vouchVal>0){
+    promoH+='<div class="promo-row"><div class="promo-icon pi-vouch">❖</div>'
+     +'<div><span class="badge-vouch">Voucher na kolejny pobyt</span><br>'
+     +'<span style="font-weight:600;color:var(--primary)">'+vouchVal.toLocaleString('pl-PL')+' zł</span>'
+     +' (10% z '+roomTotal.toLocaleString('pl-PL')+' zł noclegów · po opłaceniu)</div></div>';
+  }else{
+    promoH+='<div class="promo-na">Voucher od '+s.vouchT.toLocaleString('pl-PL')+' zł noclegów — brakuje '+(s.vouchT-roomTotal).toLocaleString('pl-PL')+' zł</div>';
+  }
 
-  // Price calculation
-  const nightWd=aBase+cChildren*cb - cAdults*(o.globalDisc+o.weekdayDisc+ld) - cChildren*(o.globalDiscC+o.weekdayDiscC+ld);
-  const nightWe=aBase+cChildren*cb - cAdults*(o.globalDisc+ld) - cChildren*(o.globalDiscC+ld);
-  const roomTotal=Math.max(0,Math.round(wdN*nightWd+w*nightWe));
-  const dinnerPN=cMeal===1?cAdults*DINNER_ADULT+cChildren*DINNER_CHILD:0;
-  const mealTotal=cNights*dinnerPN;
-  const basePN=aBase+cChildren*cb;
-  const baseTotal=cNights*basePN;
-  const grandTotal=roomTotal+mealTotal;
-  const saved=baseTotal-roomTotal;
-  const savedPct=baseTotal>0?Math.round(saved/baseTotal*100):0;
-  const wLabel=w===0?'Pobyt w tygodniu':w===1?'1 noc weekendowa':'Weekend (2 noce)';
-  const mLabel=cMeal===0?'Ze śniadaniem':'Ze śniadaniem i obiadokolacją';
-
-  document.getElementById('calc-result').innerHTML=`
-    <div class="res-header">
-      <div>
-        <div class="res-total-label">${cNights} ${cNights===1?'noc':cNights<5?'noce':'nocy'} · ${wLabel} · ${mLabel}</div>
-        <div class="res-total-price">${grandTotal.toLocaleString('pl-PL')} zł <small>łącznie</small></div>
-      </div>
-      <div class="res-saving">
-        <div class="s-label">Oszczędność na pokoju</div>
-        <div class="s-val">−${saved.toLocaleString('pl-PL')} zł</div>
-        <div class="s-pct">${savedPct}% taniej niż baza</div>
-      </div>
-    </div>
-    <div class="res-grid">
-      <div class="res-line"><div class="rl-label">Cena bazowa pokoju</div><div class="rl-val">${baseTotal.toLocaleString('pl-PL')} zł</div></div>
-      <div class="res-line"><div class="rl-label">Zniżki</div><div class="rl-val disc">−${saved.toLocaleString('pl-PL')} zł</div></div>
-      ${cMeal===1?`<div class="res-line"><div class="rl-label">Obiadokolacja (${cNights}×${dinnerPN} zł)</div><div class="rl-val meal">+${mealTotal.toLocaleString('pl-PL')} zł</div></div>`:''}
-      <div class="res-line"><div class="rl-label">Śr. cena / noc</div><div class="rl-val">${Math.round(grandTotal/cNights).toLocaleString('pl-PL')} zł</div></div>
-      <div class="res-line"><div class="rl-label">Osoby</div><div class="rl-val">${cAdults} dor.${cChildren?` + ${cChildren} dz.`:''}</div></div>
-    </div>`;
+  document.getElementById('res').innerHTML=
+    '<div class="r-top"><div>'
+    +'<div class="r-total-lbl">'+cNights+' '+(cNights===1?'noc':cNights<5?'noce':'nocy')+' · '+wLabel+' · '+mLabel+'</div>'
+    +'<div class="r-total">'+(disc5>0?finalTotal.toLocaleString('pl-PL'):preDisc.toLocaleString('pl-PL'))+' zł <small>łącznie</small></div>'
+    +(disc5>0?'<div style="font-size:.75rem;color:var(--muted);text-decoration:line-through">'+preDisc.toLocaleString('pl-PL')+' zł</div>':'')
+    +'</div>'
+    +'<div class="r-save"><div class="sl2">Oszczędność (zniżka tygodniowa)</div>'
+    +'<div class="sv2">−'+saved.toLocaleString('pl-PL')+' zł ('+savedPct+'%)</div></div></div>'
+    +'<div class="r-grid">'
+    +'<div class="rl"><div class="rll">Cena pokoju / noc'+mods+'</div>'
+    +'<div class="rlv">'+sB2+' zł'+(extraA>0?'<br>+'+extraA+'×'+sAR2+' zł (dor.)':'')+(cChildren>0?'<br>+'+cChildren+'×'+sCR2+' zł (dz.)':'')+'<br><strong>'+rpn+' zł / noc</strong></div></div>'
+    +'<div class="rl"><div class="rll">Zniżka tygodniowa</div><div class="rlv disc">'+(wdN>0?'−'+wd+' zł × '+wdN+'n = −'+(wd*wdN).toLocaleString('pl-PL')+' zł':'Brak')+'</div></div>'
+    +(cMeal===1?'<div class="rl"><div class="rll">Obiadokolacja</div><div class="rlv add">+'+mealTotal.toLocaleString('pl-PL')+' zł</div></div>':'')
+    +'<div class="rl"><div class="rll">Śr. cena / noc</div><div class="rlv">'+Math.round((disc5>0?finalTotal:preDisc)/cNights).toLocaleString('pl-PL')+' zł</div></div>'
+    +'</div>'
+    +'<div class="promo-box">'+promoH+'</div>';
 }
 
-// ─── CHILDREN SECTION ───
-function buildChildGrid(){
-  const base=childRoomType===0?CHILD_STD:CHILD_GRAND;
-  // Tiers: 1 noc, 2-3 noce, 4-5 nocy, 6-7 nocy
-  document.getElementById('child-grid').innerHTML=OFFERS.map((o,oi)=>{
-    const rows=[
-      ['1 noc — tygodniowa',       base - o.globalDiscC - o.weekdayDiscC - los(1,oi)],
-      ['1 noc — weekendowa',        base - o.globalDiscC - los(1,oi)],
-      ['2–3 noce — tygodniowa',     base - o.globalDiscC - o.weekdayDiscC - los(2,oi)],
-      ['2–3 noce — weekendowa',     base - o.globalDiscC - los(2,oi)],
-      ['4–5 nocy — tygodniowa',     base - o.globalDiscC - o.weekdayDiscC - los(4,oi)],
-      ['4–5 nocy — weekendowa',     base - o.globalDiscC - los(4,oi)],
-      ['6–7 nocy — tygodniowa',     base - o.globalDiscC - o.weekdayDiscC - los(6,oi)],
-      ['6–7 nocy — weekendowa',     base - o.globalDiscC - los(6,oi)],
-    ];
-    return`<div class="child-card">
-      <div class="child-card-head" style="background:${o.color}">${o.name}</div>
-      <div class="child-rows">
-        ${rows.map(([l,v])=>`<div class="child-row"><span class="cr-label">${l}</span><span class="cr-val">${Math.max(0,v)} zł</span></div>`).join('')}
-      </div></div>`;
-  }).join('');
+/* ── COMPARISON TABLE ── */
+function wkndsFor(n){
+  if(n>=9)return 4;
+  if(n===8)return 3;
+  return Math.min(2,n);
 }
-function setChildRoom(i,btn){
-  childRoomType=i;
-  document.querySelectorAll('.ctab').forEach((b,j)=>b.classList.toggle('active',j===i));
-  buildChildGrid();
+function stayTotalFull(r,s,n){
+  var maxP=sBase(r,s)+(r.maxT-r.minA)*sAR(r,s);
+  var wdP=maxP-r.maxT*15;
+  var w=wkndsFor(n),wdN=Math.max(0,n-w);
+  return wdN*wdP+w*maxP;
 }
-
-// ─── MATRIX ───
-function buildRoomSel(){
-  const rs=document.getElementById('rsel');
-  ROOMS.forEach((r,i)=>{const o=document.createElement('option');o.value=i;o.text=r.name;rs.appendChild(o);});
-  rs.addEventListener('change',()=>{buildOccSel();buildMatrix();});
-  buildOccSel();
+function minNFor5(r,s){
+  for(var n=1;n<=14;n++){if(stayTotalFull(r,s,n)>=s.discT)return n;}
+  return null;
 }
-function buildOccSel(){
-  const ri=+document.getElementById('rsel').value;
-  const os=document.getElementById('osel');
-  os.innerHTML='';
-  Object.keys(ROOMS[ri].prices).forEach(p=>{
-    const o=document.createElement('option');o.value=p;o.text=`${p} os. — ${ROOMS[ri].prices[p]} zł`;os.appendChild(o);
-  });
-  const keys=Object.keys(ROOMS[ri].prices);
-  os.value=keys[keys.length-1];
-  os.removeEventListener('change',buildMatrix);
-  os.addEventListener('change',buildMatrix);
-  buildMatrix();
+function combinedDisc(r,s,n){
+  var maxP=sBase(r,s)+(r.maxT-r.minA)*sAR(r,s);
+  var total=stayTotalFull(r,s,n);
+  var fullW=n*maxP;
+  return Math.round((1-total*0.95/fullW)*100);
 }
+function pctDiff(a,b){return Math.round((a-b)/b*100);}
 
-function buildMatrix(){
-  const ri=+document.getElementById('rsel').value;
-  const persons=+document.getElementById('osel').value;
-  const base=ROOMS[ri].prices[persons];
-  const offer=OFFERS[activeOffer];
-  const oi=activeOffer;
-  const mn=offer.minNights;
+function buildCmpTable(){
+  var su=SEASONS[1],st=SEASONS[0],wi=SEASONS[2];
+  function minP(r,s){return sBase(r,s)-r.minA*15;}
+  function maxP(r,s){return sBase(r,s)+(r.maxT-r.minA)*sAR(r,s);}
 
-  // Dynamic tier labels
-  const TIERS={};
-  if(oi!==0) TIERS[2]='▸ 2–3 noce — dodatkowe −5 zł / os. / noc (wszystkie doby)';
-  TIERS[4]='▸ Min. 4 noce — dodatkowe −10 zł / os. / noc (wszystkie doby)';
-  TIERS[6]='▸ Min. 6 nocy — łącznie −20 zł / os. / noc (wszystkie doby)';
+  var h='<thead><tr>'
+    +'<th>Pokój</th>'
+    +'<th colspan="2">Sezon Letni (baza)</th>'
+    +'<th colspan="2">Oferta Standardowa</th>'
+    +'<th>vs Letni</th>'
+    +'<th colspan="2">Sezon Zimowy</th>'
+    +'<th>vs Letni</th>'
+    +'</tr>'
+    +'<tr class="sub-head"><th></th>'
+    +'<th>Min</th><th>Maks</th>'
+    +'<th>Min</th><th>Maks</th><th></th>'
+    +'<th>Min</th><th>Maks</th><th></th>'
+    +'</tr></thead><tbody>';
 
-  document.querySelector('#mtbl thead').innerHTML=`<tr>
-    <th style="text-align:left">Noce</th>
-    <th>0 weekendowych</th><th>1 weekendowa</th><th>2 weekendowe</th></tr>`;
+  ROOMS_CMP.forEach(function(ri){
+    var r=ROOMS[ri];
+    var suMi=minP(r,su),suMx=maxP(r,su);
+    var stMi=minP(r,st),stMx=maxP(r,st);
+    var wiMi=minP(r,wi),wiMx=maxP(r,wi);
+    var stDMi=pctDiff(stMi,suMi),stDMx=pctDiff(stMx,suMx);
+    var wiDMi=pctDiff(wiMi,suMi),wiDMx=pctDiff(wiMx,suMx);
 
-  let rows='', all=[];
-  for(let n=1;n<=7;n++){
-    if(TIERS[n]) rows+=`<tr class="tier-row"><td colspan="4">${TIERS[n]}</td></tr>`;
-    const nl=n===1?'noc':n<5?'noce':'nocy';
-    const dimmed=n<mn;
-    rows+=`<tr${dimmed?' class="dimmed"':''}><td>${n} ${nl}${dimmed?` <span style="font-size:.65rem;color:var(--gold)">min. ${mn}</span>`:''}`;
-    rows+='</td>';
-    for(let w=0;w<=2;w++){
-      if(!isValid(n,w)){rows+=`<td class="na-cell">—</td>`;continue;}
-      const ld=los(n,oi), wdf=(n-w)/n;
-      const avg=base - persons*(offer.globalDisc+ld) - persons*offer.weekdayDisc*wdf;
-      const pct=Math.round((avg-base)/base*1000)/10;
-      if(!dimmed) all.push(pct);
-      const bg=pct<-0.05?`rgba(45,110,62,${(0.06+Math.min(Math.abs(pct)/25,1)*0.42).toFixed(2)})`:'transparent';
-      const tc=pct<-0.05?'#1e5229':'#1c1c1c', sign=pct>0?'+':'';
-      rows+=`<td style="background:${bg}"><div class="cell-pct" style="color:${tc}">${sign}${pct}%</div><div class="cell-sub">${Math.round(avg)} zł</div></td>`;
+    var suN=minNFor5(r,su),stN=minNFor5(r,st),wiN=minNFor5(r,wi);
+    var suD=suN?combinedDisc(r,su,suN):null;
+    var stD=stN?combinedDisc(r,st,stN):null;
+    var wiD=wiN?combinedDisc(r,wi,wiN):null;
+
+    function tCell(n,d){
+      if(!n) return '';
+      var over=n>7?'<span style="font-size:.65rem;color:var(--muted)"> (hipotetyczne)</span>':'';
+      return '<div class="pthresh"><div class="pthresh-n">Od '+n+' nocy'+over+'</div>'
+        +'<div class="pthresh-v">łącznie −'+d+'% vs weekend</div></div>';
     }
-    rows+='</tr>';
-  }
-  document.querySelector('#mtbl tbody').innerHTML=rows;
 
-  const note=document.getElementById('mat-note');
-  if(mn>1){note.textContent=`Oferta Standardowa: minimalny pobyt ${mn} noce. Wiersze N<${mn} pokazane poglądowo.`;note.style.display='block';}
-  else note.style.display='none';
+    h+='<tr>'
+      +'<td>'+r.name+'<div style="font-size:.67rem;color:var(--muted)">'+r.minA+'–'+r.maxT+' os.</div></td>'
+      +'<td><div class="pn">'+suMi+' zł</div><div class="ps">tygodniowa</div>'+tCell(suN,suD)+'</td>'
+      +'<td><div class="pn">'+suMx+' zł</div><div class="ps">weekendowa</div></td>'
+      +'<td><div class="pn">'+stMi+' zł</div>'+tCell(stN,stD)+'</td>'
+      +'<td><div class="pn">'+stMx+' zł</div></td>'
+      +'<td><div class="pdiff">min: '+stDMi+'%</div><div class="pdiff">maks: '+stDMx+'%</div></td>'
+      +'<td><div class="pn">'+wiMi+' zł</div>'+tCell(wiN,wiD)+'</td>'
+      +'<td><div class="pn">'+wiMx+' zł</div></td>'
+      +'<td><div class="pdiff">min: '+wiDMi+'%</div><div class="pdiff">maks: '+wiDMx+'%</div></td>'
+      +'</tr>';
+  });
 
-  if(all.length){
-    const mn2=Math.min(...all),mx=Math.max(...all);
-    const mnP=Math.round(base*(1+mn2/100)),mxP=Math.round(base*(1+mx/100));
-    document.getElementById('smry').innerHTML=`
-      <div class="sc"><div class="l">Cena bazowa</div><div class="v base">${base} zł</div></div>
-      <div class="sc"><div class="l">Maks. zniżka</div><div class="v good">${Math.abs(mn2)}% → ${mnP} zł</div></div>
-      <div class="sc"><div class="l">Min. zniżka</div><div class="v" style="color:#5a5a5a">${Math.abs(mx)}% → ${mxP} zł</div></div>
-      <div class="sc"><div class="l">Rozpiętość</div><div class="v">${mxP-mnP} zł / noc</div></div>`;
-  }
+  document.getElementById('cmptbl').innerHTML=h+'</tbody>';
 }
 
-function selectOffer(i){
-  activeOffer=i;
-  document.querySelectorAll('.offer-tab').forEach((t,j)=>t.classList.toggle('active',j===i));
-  if(cNights<minNights()) cNights=minNights();
-  buildRules(); buildChildGrid(); buildMatrix(); updateCalc();
+function selS(i){
+  activeSeason=i;
+  var mn=SEASONS[i].minN;
+  if(cNights<mn)cNights=mn;
+  buildTabs();buildPriceTable();updateCalc();
 }
 
-// ─── INIT ───
-buildOfferTabs();
-initCalcRoom();
-cAdults=minA(cRoom);
-updateCalc();
-buildRules();
-buildPriceTable();
-buildChildGrid();
-buildRoomSel();
+buildTabs();
+initRoomSel();
+cAdults=ROOMS[0].minA;
+updateCalc();buildPriceTable();buildCmpTable();
 </script>
 </body>
 </html>
